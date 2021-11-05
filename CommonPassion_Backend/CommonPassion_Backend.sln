@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonPassion_Backend", "CommonPassion_Backend.csproj", "{289A1CE3-4460-408F-99D8-2B5B4E47BF92}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{289A1CE3-4460-408F-99D8-2B5B4E47BF92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{289A1CE3-4460-408F-99D8-2B5B4E47BF92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{289A1CE3-4460-408F-99D8-2B5B4E47BF92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{289A1CE3-4460-408F-99D8-2B5B4E47BF92}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {601B63FE-95E7-45AE-B617-AE50FA691D97}
+	EndGlobalSection
+EndGlobal
