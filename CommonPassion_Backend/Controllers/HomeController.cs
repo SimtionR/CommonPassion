@@ -1,20 +1,22 @@
 ﻿
 namespace CommonPassion_Backend.Controllers
 {
+    using CommonPassion_Backend.Data.Processors;
+    using CommonPassion_Backend.Infrastrcture;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Logging;
-    using System.Diagnostics;
+    using System.Threading.Tasks;
 
-    [ApiController]
-    public class HomeController : ControllerBase
+    public class HomeController : ApiController
     {
 
         [Authorize]
-        public IActionResult Get()
+        public ActionResult Get()
         {
+         
+             
 
-            return Ok();
+            return Ok("works");
         }
         
     }
