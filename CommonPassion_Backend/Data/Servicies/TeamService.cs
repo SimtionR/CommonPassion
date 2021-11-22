@@ -33,30 +33,35 @@ namespace CommonPassion_Backend.Data.Servicies
         public async Task<ApiTeam> GetTeamInfo(int teamId)
         {
             ReqMessageTeamInfoId(teamId);
-            return await ReturnTeam(_requestMessage);
+            return await ReturnTeam<ApiTeam>(_requestMessage);
         }
+
+
+
+        public async Task<ApiAvaialbleSeasons> GetTeamSeasons(int teamId)
+        {
+            ReqMessageTeamSeasons(teamId);
+            return await ReturnTeam<ApiAvaialbleSeasons>(_requestMessage);
+        }
+
+        public async Task<ApiTeamStats> GetTeamStats(int leagueId, int season, int teamId)
+        {
+            ReqMessageTeamStats(leagueId, season, teamId);
+            return await ReturnTeam<ApiTeamStats>(_requestMessage);
+        }
+
+
 
        
 
-        public async  Task<ApiTeam> GetTeamSeasons(int teamId)
-        {
-            ReqMessageTeamSeasons(teamId);
-            return await ReturnTeam(_requestMessage);
-        }
-
-        public async Task<ApiTeam> GetTeamStats(int leagueId, int season, int teamId)
-        {
-            ReqMessageTeamStats(leagueId, season, teamId);
-            return await ReturnTeam(_requestMessage);
-        }
-
-        private async Task<ApiTeam> ReturnTeam(HttpRequestMessage _requestMessage)
+     
+        private async Task<T> ReturnTeam<T>(HttpRequestMessage _requestMessage)
         {
             using (var response = await _httpClient.SendAsync(_requestMessage))
 
             {
                 response.EnsureSuccessStatusCode();
-                var team = await response.Content.ReadFromJsonAsync<ApiTeam>();
+                var team = await response.Content.ReadFromJsonAsync<T>();
                 return team;
             }
         }
@@ -65,14 +70,18 @@ namespace CommonPassion_Backend.Data.Servicies
         {
             this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/teams?id={id}");
         }
-        private void ReqMessageTeamStats(int league,int season,int id)
+        private void ReqMessageTeamStats(int league, int season, int id)
         {
-           this. _requestMessage.RequestUri =
-                new Uri($"https://api-football-v1.p.rapidapi.com/v3/teams/statistics?league={league}&season={season}&team={id}");
+            this._requestMessage.RequestUri =
+                 new Uri($"https://api-football-v1.p.rapidapi.com/v3/teams/statistics?league={league}&season={season}&team={id}");
         }
         private void ReqMessageTeamSeasons(int id)
         {
             this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/teams/seasons?team={id}");
         }
+
+
+
     }
-}
+       
+    }

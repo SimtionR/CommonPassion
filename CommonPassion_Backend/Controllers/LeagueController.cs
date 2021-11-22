@@ -36,7 +36,7 @@ namespace CommonPassion_Backend.Controllers
 
 
         [HttpGet]
-        [Route("Id/{id}")]
+        [Route("id={id}")]
 
         public async Task<ActionResult<ApiLeague>> GetLeagueById(int id)
         {

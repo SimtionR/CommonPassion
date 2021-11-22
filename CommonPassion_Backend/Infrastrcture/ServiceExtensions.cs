@@ -17,7 +17,9 @@ namespace CommonPassion_Backend.Infrastrcture
         {
             return services.
                 AddTransient<IUserService, UserService>().
-                AddTransient<ILeagueService, LeagueService>();
+                AddTransient<ILeagueService, LeagueService>().
+                AddTransient<ITeamService, TeamService>().
+                AddTransient<IPlayerService, PlayerService>();
         }
         
     }

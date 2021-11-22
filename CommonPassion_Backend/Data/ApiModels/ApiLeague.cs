@@ -13,10 +13,10 @@ namespace CommonPassion_Backend.Data.ApiModels
 
     public class ResponseLeague
     {
-        public League league { get; set; }
+        public LeagueL league { get; set; }
     }
 
-    public class League
+    public class LeagueL
     {
         public int id { get; set; }
         public string name { get; set; }
