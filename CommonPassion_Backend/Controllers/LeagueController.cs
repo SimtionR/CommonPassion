@@ -25,42 +25,80 @@ namespace CommonPassion_Backend.Controllers
         }
 
 
+
+        //Gets info about all leagueas avaialble 
         [HttpGet]
-        [Route("all")]
-        public async Task<ActionResult<ApiLeague>> GetAllLeagues()
+        [Route("all/{current?}")]
+        public async Task<ActionResult<ApiLeague>> GetAllLeagues(string current="false")
         {
-            var leagues = await _leagueService.GetAllLeagues();
+            var leagues = await _leagueService.GetAllLeagues(current);
             return Result(leagues);
 
         }
 
-
+        //gets league by league ID 
         [HttpGet]
-        [Route("id={id}")]
+        [Route("id={id}/{current?}")]
 
-        public async Task<ActionResult<ApiLeague>> GetLeagueById(int id)
+        public async Task<ActionResult<ApiLeague>> GetLeagueById(int id, string current="false")
         {
-            var league = await this._leagueService.GetLeagueaById(id);
+            var league = await this._leagueService.GetLeagueaById(id,current);
             return Result(league);
         }
 
 
 
+        //gets league by club Id
+
         [HttpGet]
-        [Route("clubId/{id}")]
-        public async Task<ActionResult<ApiLeague>> GetLeagueByTeamId(int id)
+        [Route("clubId={id}/{current?}")]
+        public async Task<ActionResult<ApiLeague>> GetLeagueByTeamId(int id, string current="false")
         {
-            var league = await this._leagueService.GetLeagueByTeamId(id);
+            var league = await this._leagueService.GetLeagueByTeamId(id, current);
             return Result(league);
 
         }
 
+
+        //gets league by countryCode
         [HttpGet]
-        [Route("countryCode/{id}")]
-        public async Task<ActionResult<ApiLeague>> GetLeagueByCountryCode(string id)
+        [Route("countryCode={id}/{current?}")]
+        public async Task<ActionResult<ApiLeague>> GetLeagueByCountryCode(string id, string current="false")
         {
-            var league = await this._leagueService.GetLeagueByCountry(id);
+            var league = await this._leagueService.GetLeagueByCountry(id, current);
             return Result(league);
+        }
+
+       /* [HttpGet]
+        [Route("runningSeasons")]
+        public async Task<ActionResult<ApiLeague>> GetRunningSeasons()
+        {
+
+        }*/
+
+
+        [HttpGet]
+        [Route("test")]
+        public async Task<ActionResult<string>> GetTested()
+        {
+            var client = new HttpClient();
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/leagues?team=33&current=true"),
+                Headers =
+    {
+        { "x-rapidapi-host", "api-football-v1.p.rapidapi.com" },
+        { "x-rapidapi-key", "***REMOVED***" },
+    },
+            };
+            using (var response = await client.SendAsync(request))
+            {
+                response.EnsureSuccessStatusCode();
+                var body = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(body);
+                return body;
+            }
         }
 
 

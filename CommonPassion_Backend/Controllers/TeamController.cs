@@ -1,4 +1,5 @@
-﻿using CommonPassion_Backend.Data.ApiModels;
+﻿
+using CommonPassion_Backend.Data.ApiModels;
 using CommonPassion_Backend.Data.IServicies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading.Tasks;using static CommonPassion_Backend.Data.ApiModels.ApiTeam;
 
 namespace CommonPassion_Backend.Controllers
 {
@@ -20,6 +21,8 @@ namespace CommonPassion_Backend.Controllers
             _teamService = teamService;
         }
 
+        //gets team info based on id
+
         [HttpGet]
         [Route("id={id}")]
         public async Task<ActionResult<ApiTeam>> TeamById(int id )
@@ -29,15 +32,19 @@ namespace CommonPassion_Backend.Controllers
             return returnTeam<ApiTeam>(team);
 
         }
+
+        //stats of the team based on season 
         [HttpGet]
         [Route("stats/id={id}&&leagueId={leagueId}&&season={season}")]
-        public async Task<ActionResult<ApiTeamStats>> TeamStatsById(int id, int leagueId, int season)
+        public async Task<ActionResult<ApiTeamSeason>> TeamStatsById(int id, int leagueId, int season)
         {
             var team = await this._teamService.GetTeamStats(leagueId, season, id);
 
-            return returnTeam<ApiTeamStats>(team);
+            return returnTeam<ApiTeamSeason>(team);
         }
 
+
+        //all avaialble seasons of a team  based on teamID
         [HttpGet]
         [Route("allSeasons/id={id}")]
         public async Task<ActionResult<ApiAvaialbleSeasons>> TeamSeasons( int id)
@@ -46,6 +53,8 @@ namespace CommonPassion_Backend.Controllers
             return returnTeam<ApiAvaialbleSeasons>(team);
 
         }
+
+
 
 
        

@@ -24,7 +24,7 @@ namespace CommonPassion_Backend.Data.Servicies
             _requestMessage= new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/leagues"),
+                
                 Headers =
                         {
                             { "x-rapidapi-host", "api-football-v1.p.rapidapi.com" },
@@ -32,57 +32,66 @@ namespace CommonPassion_Backend.Data.Servicies
                         }
             };
         }
-        public async Task<ApiLeague> GetAllLeagues()
+        public async Task<ApiLeague> GetAllLeagues(string current)
         {
           
-            using (var respone = await _httpClient.SendAsync(_requestMessage))
-            {
-                respone.EnsureSuccessStatusCode();
-                var leagues = await respone.Content.ReadFromJsonAsync<ApiLeague>();
+           
+                this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/leagues?current={current}");
 
-                return leagues;
+
+
+                return await returnLeague();
                 
-            }         
+            
         }
 
-        public async Task<ApiLeague> GetLeagueaById(int id)
+        public async Task<ApiLeague> GetLeagueaById(int id,string current)
         {
-            ChangeRequestMessageLeagueId(id);
+            ChangeRequestMessageLeagueId(id,current);
             return await returnLeague();
         }
 
        
-        public async Task<ApiLeague> GetLeagueByCountry(string country)
+        public async Task<ApiLeague> GetLeagueByCountry(string country, string current)
         {
-            ChangeRequestMessageCountryCode(country);
+            ChangeRequestMessageCountryCode(country, current);
             return await returnLeague();
           
         }
 
-        public async Task<ApiLeague> GetLeagueByTeamId(int id)
+        public async Task<ApiLeague> GetLeagueByTeamId(int id, string current)
         {
-            ChangeRequestMessageTeamId(id);
+            ChangeRequestMessageTeamId(id,current);
             return await returnLeague();
         }
 
+
+      
+
+
+
+
+
         //Changes the req message 
-        private void ChangeRequestMessageLeagueId(int id)
+        private void ChangeRequestMessageLeagueId(int id, string current)
         {
-            this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/leagues?id={id}");
+            
+            this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/leagues?id={id}&current={current}");
 
         }
 
 
-        private void ChangeRequestMessageTeamId(int id)
+
+        private void ChangeRequestMessageTeamId(int id, string current)
         {
-            this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/leagues?team={id}");
+            this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/leagues?team={id}&current={current}");
 
         }
 
 
-        private void ChangeRequestMessageCountryCode(string code)
+        private void ChangeRequestMessageCountryCode(string code, string current)
         {
-            this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/leagues?code={code}");
+            this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/leagues?code={code}&current={current}");
 
         }
 
@@ -98,5 +107,7 @@ namespace CommonPassion_Backend.Data.Servicies
                 return league;
             }
         }
+
+        
     }
 }

@@ -6,45 +6,42 @@ using System.Threading.Tasks;
 
 namespace CommonPassion_Backend.Data.ApiModels
 {
-    public class ApiTeamStats
+    public class ApiTeamSeason
+
     {
-
-
-        public ParametersTeamStats parameters { get; set; }
+        public string get { get; set; }
+        public Parameters2 parameters { get; set; }
         public object[] errors { get; set; }
-        public ResponseTeamStats response { get; set; }
+        public int results { get; set; }
+        public Paging paging { get; set; }
+        public Response2 response { get; set; }
     }
-        
 
-        public class ParametersTeamStats
+        public class Parameters2
         {
             public string league { get; set; }
             public string season { get; set; }
             public string team { get; set; }
         }
 
-        public class Paging
-        {
-            public int current { get; set; }
-            public int total { get; set; }
-        }
+       
 
-        public class ResponseTeamStats
+        public class Response2
         {
-            public LeagueL league { get; set; }
-            public Team team { get; set; }
+            public League2 league { get; set; }
+            public Team2 team { get; set; }
             public string form { get; set; }
-            public Fixtures fixtures { get; set; }
-            public GoalsT goals { get; set; }
-            public Biggest biggest { get; set; }
-            public Clean_Sheet clean_sheet { get; set; }
-            public Failed_To_Score failed_to_score { get; set; }
-            public PenaltyT penalty { get; set; }
-            public Lineup[] lineups { get; set; }
-            public CardsT cards { get; set; }
+            public Fixtures2 fixtures { get; set; }
+            public Goals2 goals { get; set; }
+            public Biggest2 biggest { get; set; }
+            public Clean_Sheet2 clean_sheet { get; set; }
+            public Failed_To_Score2 failed_to_score { get; set; }
+            public Penalty2 penalty { get; set; }
+            public Lineup2[] lineups { get; set; }
+            public Cards2 cards { get; set; }
         }
 
-        public class LeagueStats
+        public class League2
         {
             public int id { get; set; }
             public string name { get; set; }
@@ -54,72 +51,77 @@ namespace CommonPassion_Backend.Data.ApiModels
             public int season { get; set; }
         }
 
-  
-
-        public class Fixtures
+        public class Team2
         {
-            public Played played { get; set; }
-            public Wins wins { get; set; }
-            public Draws draws { get; set; }
-            public Loses loses { get; set; }
+            public int id { get; set; }
+            public string name { get; set; }
+            public string logo { get; set; }
         }
 
-        public class Played
+        public class Fixtures2
         {
-            public int home { get; set; }
-            public int away { get; set; }
-            public int total { get; set; }
+            public Played2 played { get; set; }
+            public Wins2 wins { get; set; }
+            public Draws2 draws { get; set; }
+            public Loses2 loses { get; set; }
         }
 
-        public class Wins
+        public class Played2
         {
             public int home { get; set; }
             public int away { get; set; }
             public int total { get; set; }
         }
 
-        public class Draws
+        public class Wins2
         {
             public int home { get; set; }
             public int away { get; set; }
             public int total { get; set; }
         }
 
-        public class Loses
+        public class Draws2
         {
             public int home { get; set; }
             public int away { get; set; }
             public int total { get; set; }
         }
 
-        public class GoalsT
-        {
-            public For _for { get; set; }
-            public Against against { get; set; }
-        }
-
-        public class For
-        {
-            public Total total { get; set; }
-            public Average average { get; set; }
-            public Minute minute { get; set; }
-        }
-
-        public class Total
+        public class Loses2
         {
             public int home { get; set; }
             public int away { get; set; }
             public int total { get; set; }
         }
 
-        public class Average
+        public class Goals2
+        {
+            public For2 _for { get; set; }
+            public Against2 against { get; set; }
+        }
+
+        public class For2
+        {
+            public Total2 total { get; set; }
+            public Average2 average { get; set; }
+            public Minute2 minute { get; set; }
+        }
+
+        public class Total2
+        {
+            public int home { get; set; }
+            public int away { get; set; }
+            public int total { get; set; }
+        }
+
+        public class Average2
         {
             public string home { get; set; }
             public string away { get; set; }
             public string total { get; set; }
         }
 
-        public class Minute
+        public class Minute2
         {
             public _015 _015 { get; set; }
             public _1630 _1630 { get; set; }
@@ -179,7 +181,7 @@ namespace CommonPassion_Backend.Data.ApiModels
             public object percentage { get; set; }
         }
 
-        public class Against
+        public class Against2
         {
             public Total1 total { get; set; }
             public Average1 average { get; set; }
@@ -260,7 +262,7 @@ namespace CommonPassion_Backend.Data.ApiModels
             public object percentage { get; set; }
         }
 
-        public class Biggest
+        public class Biggest2
         {
             public Streak streak { get; set; }
             public Wins1 wins { get; set; }
@@ -305,40 +307,40 @@ namespace CommonPassion_Backend.Data.ApiModels
             public int away { get; set; }
         }
 
-        public class Clean_Sheet
+        public class Clean_Sheet2
         {
             public int home { get; set; }
             public int away { get; set; }
             public int total { get; set; }
         }
 
-        public class Failed_To_Score
+        public class Failed_To_Score2
         {
             public int home { get; set; }
             public int away { get; set; }
             public int total { get; set; }
         }
 
-        public class PenaltyT
+        public class Penalty2
         {
-            public Scored scored { get; set; }
-            public Missed missed { get; set; }
+            public Scored2 scored { get; set; }
+            public Missed2 missed { get; set; }
             public int total { get; set; }
         }
 
-        public class Scored
-        {
-            public int total { get; set; }
-            public string percentage { get; set; }
-        }
-
-        public class Missed
+        public class Scored2
         {
             public int total { get; set; }
             public string percentage { get; set; }
         }
 
-        public class CardsT
+        public class Missed2
+        {
+            public int total { get; set; }
+            public string percentage { get; set; }
+        }
+
+        public class Cards2
         {
             public Yellow yellow { get; set; }
             public Red red { get; set; }
@@ -464,12 +466,11 @@ namespace CommonPassion_Backend.Data.ApiModels
             public object percentage { get; set; }
         }
 
-        public class Lineup
+        public class Lineup2
         {
             public string formation { get; set; }
             public int played { get; set; }
         }
 
     }
-
 

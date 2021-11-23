@@ -1,4 +1,5 @@
-﻿using CommonPassion_Backend.Data.ApiModels;
+﻿
+using CommonPassion_Backend.Data.ApiModels;
 using CommonPassion_Backend.Data.IServicies;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,8 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
+
+using static CommonPassion_Backend.Data.ApiModels.ApiTeam;
 
 namespace CommonPassion_Backend.Data.Servicies
 {
@@ -44,10 +47,10 @@ namespace CommonPassion_Backend.Data.Servicies
             return await ReturnTeam<ApiAvaialbleSeasons>(_requestMessage);
         }
 
-        public async Task<ApiTeamStats> GetTeamStats(int leagueId, int season, int teamId)
+        public async Task<ApiTeamSeason> GetTeamStats(int leagueId, int season, int teamId)
         {
             ReqMessageTeamStats(leagueId, season, teamId);
-            return await ReturnTeam<ApiTeamStats>(_requestMessage);
+            return await ReturnTeam<ApiTeamSeason>(_requestMessage);
         }
 
 
@@ -70,10 +73,10 @@ namespace CommonPassion_Backend.Data.Servicies
         {
             this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/teams?id={id}");
         }
-        private void ReqMessageTeamStats(int league, int season, int id)
+        private void ReqMessageTeamStats(int leagueId, int season, int teamId)
         {
             this._requestMessage.RequestUri =
-                 new Uri($"https://api-football-v1.p.rapidapi.com/v3/teams/statistics?league={league}&season={season}&team={id}");
+                 new Uri($"https://api-football-v1.p.rapidapi.com/v3/teams/statistics?league={leagueId}&season={season}&team={teamId}");
         }
         private void ReqMessageTeamSeasons(int id)
         {

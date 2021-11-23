@@ -8,29 +8,53 @@ namespace CommonPassion_Backend.Data.ApiModels
 {
     public class ApiPlayer
     {
-        public string get { get; set; }
-        public Parameters parameters { get; set; }
-        public object[] errors { get; set; }
-        public int results { get; set; }
-        public Paging paging { get; set; }
-        public Response[] response { get; set; }
-    }
-
-    public class Parameters
-    {
-        public string id { get; set; }
-        public string season { get; set; }
-    }
-
     
+        
+            public string get { get; set; }
+            public Parameters parameters { get; set; }
+            public object[] errors { get; set; }
+            public int results { get; set; }
+            public Paging paging { get; set; }
+            public Response[] response { get; set; }
+        
+    }
+        public class Parameters
+        {
+            public string league { get; set; }
+            public string search { get; set; }
+            public string id { get; set; }
+            public string page { get; set; }
+            public string team { get; set; }
+            public string season { get; set; }
+            public string fixture { get; set; }
+        }
+    public class Paging
+    {
+        public int current { get; set; }
+        public int total { get; set; }
+    }
 
     public class Response
     {
         public Player player { get; set; }
         public Statistic[] statistics { get; set; }
+        public Team team { get; set; }  // in plus de la inGame req
+        public Players[] players { get; set; } // same
     }
 
-    public class Player
+    public class Players
+    { 
+        public Player1 player { get; set; }
+        public Statistic[] statistics { get; set; }
+    }
+    public class Player1 // clasa in plus
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public string photo { get; set; }
+    }
+
+public class Player
     {
         public int id { get; set; }
         public string name { get; set; }
@@ -54,9 +78,10 @@ namespace CommonPassion_Backend.Data.ApiModels
 
     public class Statistic
     {
-        public TeamP team { get; set; }
-        public LeagueP league { get; set; }
+        public Team team { get; set; }
+        public League league { get; set; }
         public Games games { get; set; }
+        public int? offsides { get; set; } // in plus de la in game
         public Substitutes substitutes { get; set; }
         public Shots shots { get; set; }
         public Goals goals { get; set; }
@@ -69,14 +94,17 @@ namespace CommonPassion_Backend.Data.ApiModels
         public Penalty penalty { get; set; }
     }
 
-    public class TeamP
+    public class Team
     {
         public int? id { get; set; }
         public string name { get; set; }
         public string logo { get; set; }
+        public string country { get; set; }//added team
+        public int? founded { get; set; }// added teamApi
+        public bool national { get; set; }//same
     }
 
-    public class LeagueP
+    public class League
     {
         public int? id { get; set; }
         public string name { get; set; }
@@ -95,6 +123,7 @@ namespace CommonPassion_Backend.Data.ApiModels
         public string position { get; set; }
         public string rating { get; set; }
         public bool captain { get; set; }
+        public bool substitute { get; set; }// 1 
     }
 
     public class Substitutes
@@ -122,7 +151,9 @@ namespace CommonPassion_Backend.Data.ApiModels
     {
         public int? total { get; set; }
         public int? key { get; set; }
-        public int? accuracy { get; set; }
+        public Object? accuracy { get; set; } // changed to object because it can be eitehr int/ string
+        
+
     }
 
     public class Tackles
@@ -170,3 +201,4 @@ namespace CommonPassion_Backend.Data.ApiModels
 
 
 }
+

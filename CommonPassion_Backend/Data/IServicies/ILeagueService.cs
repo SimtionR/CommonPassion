@@ -10,9 +10,10 @@ namespace CommonPassion_Backend.Data.IServicies
 {
     public interface ILeagueService
     {
-        public Task<ApiLeague> GetAllLeagues();
-        public Task<ApiLeague> GetLeagueaById(int id);
-        public Task<ApiLeague> GetLeagueByCountry(string country);
-        public Task<ApiLeague> GetLeagueByTeamId(int id);
+        public Task<ApiLeague> GetAllLeagues(string curent);
+        public Task<ApiLeague> GetLeagueaById(int id, string current);
+        public Task<ApiLeague> GetLeagueByCountry(string country, string current);
+        public Task<ApiLeague> GetLeagueByTeamId(int id, string current);
+        //public Task<ApiLeague> GetRunningLeagues();
     }
 }
