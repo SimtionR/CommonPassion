@@ -10,6 +10,8 @@ namespace CommonPassion_Backend.Controllers
     public class HomeController : ApiController
     {
 
+
+        [HttpGet]
         [Authorize]
         public ActionResult Get()
         {

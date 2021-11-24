@@ -38,7 +38,7 @@ namespace CommonPassion_Backend.Controllers
 
         //gets league by league ID 
         [HttpGet]
-        [Route("id={id}/{current?}")]
+        [Route("{id}/{current?}")]
 
         public async Task<ActionResult<ApiLeague>> GetLeagueById(int id, string current="false")
         {

@@ -6,5 +6,9 @@ import { environment } from '../../environments/environment';
 })
 export class HomeService {
 private homePath= environment+ '/home';
+
   constructor(private httpClient: HttpClient) { }
+
+
+  
 }

@@ -1,27 +1,27 @@
 ﻿namespace CommonPassion_Backend.Controllers
 {
+    using CommonPassion_Backend.Data.IServicies;
+    using CommonPassion_Backend.Data.Models.Identity;
     using CommonPassion_Backend.Entities;
     using CommonPassion_Backend.Models;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
-    using Microsoft.IdentityModel.Tokens;
-    using System;
-    using System.IdentityModel.Tokens.Jwt;
-    using System.Security.Claims;
-    using System.Text;
     using System.Threading.Tasks;
     public class IdentityController : ApiController
     {
         private readonly UserManager<User> _userMananger;
+        private readonly IIdentityService _identityService;
         private readonly AppSettings _appSettings;
 
-        public IdentityController(UserManager<User> userManager, IOptions<AppSettings> appSettings)
+        public IdentityController(UserManager<User> userManager, IOptions<AppSettings> appSettings, IIdentityService identityService)
         {
             this._userMananger = userManager;
+            _identityService = identityService;
             this._appSettings = appSettings.Value;
         }
 
+        [HttpPost]
         [Route(nameof(Register))]
         public async Task<ActionResult> Register(AuthRequestModel model)
         {
@@ -41,8 +41,9 @@
             return BadRequest(result.Errors);
         }
 
+        [HttpPost]
         [Route(nameof(Login))]
-        public async Task<ActionResult<Object>> Login(AuthResponseModel model)
+        public async Task<ActionResult<LoginResponseModel>> Login(AuthResponseModel model)
         {
             var user = await this._userMananger.FindByNameAsync(model.UserName);
             if(user == null)
@@ -57,22 +58,24 @@
                 return Unauthorized();
             }
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(this._appSettings.Secret);
+            var encryptedToken= this._identityService.GenerateJwtToken(user.Id, user.UserName, this._appSettings.Secret);
+            /*
+                        var tokenHandler = new JwtSecurityTokenHandler();
+                        var key = Encoding.ASCII.GetBytes(this._appSettings.Secret);
 
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, user.Id.ToString())
-                }),
-                Expires = DateTime.UtcNow.AddDays(7),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            var encryptedToken = tokenHandler.WriteToken(token);
+                        var tokenDescriptor = new SecurityTokenDescriptor
+                        {
+                            Subject = new ClaimsIdentity(new Claim[]
+                            {
+                                new Claim(ClaimTypes.Name, user.Id.ToString())
+                            }),
+                            Expires = DateTime.UtcNow.AddDays(7),
+                            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                        };
+                        var token = tokenHandler.CreateToken(tokenDescriptor);
+                        var encryptedToken = tokenHandler.WriteToken(token);*/
 
-            return new
+            return new LoginResponseModel
             {
                 Token = encryptedToken
             };

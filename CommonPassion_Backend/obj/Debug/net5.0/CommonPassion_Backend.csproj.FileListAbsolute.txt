@@ -59,3 +59,8 @@ C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\bin\Debug\net5.0\runtimes\w
 C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\bin\Debug\net5.0\Humanizer.dll
 C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\obj\Debug\net5.0\CommonPassion_Backend.MvcApplicationPartsAssemblyInfo.cs
