@@ -67,6 +67,7 @@ namespace CommonPassion_Backend.Controllers
         {
             var league = await this._leagueService.GetLeagueByCountry(id, current);
             return Result(league);
+          
         }
 
        /* [HttpGet]
@@ -75,6 +76,22 @@ namespace CommonPassion_Backend.Controllers
         {
 
         }*/
+
+
+        [HttpGet]
+        [Route("home")]
+        public async Task<IEnumerable<ApiLeague>> GetImprotantLeagues()
+        {
+            var leagues = await this._leagueService.GetTop5_1Leagues();
+
+            if (leagues.Count() > 0)
+            {
+                return leagues;
+            }
+            else return (IEnumerable<ApiLeague>)NotFound();
+
+           
+        }
 
 
         [HttpGet]

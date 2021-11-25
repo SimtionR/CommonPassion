@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-3" *ngFor="let league of leagueApi">
+      <div class="card" style="width: 18rem;">
+        <img [src]="league.response[0].league.logo" class="card-img-top" alt="">
+        <div class="card-body">
+          <h5 class="card-title">{{league.response[0].league.name}}</h5>
+          <p class="card-text">Country: {{league.response[0].country.name}} </p>
+          <a href="#" class="btn btn-primary">View More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

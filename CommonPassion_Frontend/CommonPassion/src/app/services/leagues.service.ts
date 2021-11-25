@@ -11,17 +11,22 @@ export class LeaguesService {
 
   // public var leagueId=0;
 
-  private leagueByIdPath= environment.apiUrl + `/league/`;
+  private leaguePath= environment.apiUrl + `/league/`;
 
 
   constructor(private http :HttpClient) { }
 
 
   getLeagueById(leagueId:any) :Observable<any>{
-    return this.http.get(this.leagueByIdPath +`${leagueId}`);
+    return this.http.get(this.leaguePath +`${leagueId}`);
   }
 
   getLeagues() : Observable<any> {
-    return this.http.get(this.leagueByIdPath+'all');
+    return this.http.get(this.leaguePath+'all');
+  }
+
+  getImportantLeagues() : Observable<any>
+  {
+    return this.http.get(this.leaguePath+'home');
   }
 }

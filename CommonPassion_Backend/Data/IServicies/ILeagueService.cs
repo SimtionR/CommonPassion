@@ -15,6 +15,9 @@ namespace CommonPassion_Backend.Data.IServicies
         public Task<ApiLeague> GetLeagueByCountry(string country, string current);
         public Task<ApiLeague> GetLeagueByTeamId(int id, string current);
 
+        //just a test
+        public Task<IEnumerable<ApiLeague>> GetTop5_1Leagues();
+
 
         //public Task<ApiLeague> GetRunningLeagues();
     }
