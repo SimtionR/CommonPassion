@@ -66,6 +66,42 @@ namespace CommonPassion_Backend.Data.Servicies
             return await returnLeague(_requestMessage);
         }
 
+        public async Task<IEnumerable<ApiLeague>> GetTop5_1Leagues()
+        {
+            var currentFalse = "false";
+            var currentTrue = "true";
+
+            var topLeagues = new ApiLeague[6];
+
+            //bpl
+            var reqBpl = await ChangeMultipleRequestMessageLeagueId(39, currentTrue);
+            topLeagues[0] = await returnLeague(reqBpl);
+            //serie a
+            var reqSerieA = await ChangeMultipleRequestMessageLeagueId(135, currentTrue);
+            topLeagues[1] = await returnLeague(reqSerieA);
+            //la liga
+            var reqLaLiga = await ChangeMultipleRequestMessageLeagueId(140, currentTrue);
+            topLeagues[2] = await returnLeague(reqLaLiga);
+            //ligue 1
+            var reqLigue1 = await ChangeMultipleRequestMessageLeagueId(61, currentTrue);
+            topLeagues[3] = await returnLeague(reqLigue1);
+            //bundesliga id 78
+            var reqBundesliga = await ChangeMultipleRequestMessageLeagueId(78, currentTrue);
+            topLeagues[4] = await returnLeague(reqBundesliga);
+            //liga 1
+            var reqLiga1 = await ChangeMultipleRequestMessageLeagueId(283, currentTrue);
+            topLeagues[5] = await returnLeague(reqLiga1);
+            return topLeagues;
+
+        }
+
+        public async Task<ApiLeague> GetLeagueByCountryName(string name)
+        {
+            this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/leagues?search={name}");
+
+            return await returnLeague(_requestMessage);
+        }
+
 
 
 
@@ -129,40 +165,9 @@ namespace CommonPassion_Backend.Data.Servicies
      
 
 
-        //JUST A TEST
 
-        public async Task<IEnumerable<ApiLeague>> GetTop5_1Leagues()
-        {
-            var currentFalse = "false";
-            var currentTrue = "true";
+    
 
-            var topLeagues = new ApiLeague[6];
-
-            //bpl
-            var reqBpl= await ChangeMultipleRequestMessageLeagueId(39, currentTrue);
-            topLeagues[0] = await returnLeague(reqBpl);
-            //serie a
-            var reqSerieA= await ChangeMultipleRequestMessageLeagueId(135, currentTrue);
-            topLeagues[1] = await returnLeague(reqSerieA);
-            //la liga
-            var reqLaLiga= await ChangeMultipleRequestMessageLeagueId(140, currentTrue);
-            topLeagues[2] = await returnLeague(reqLaLiga);
-            //ligue 1
-            var reqLigue1= await ChangeMultipleRequestMessageLeagueId(61, currentTrue);
-            topLeagues[3] = await returnLeague(reqLigue1);
-            //bundesliga id 78
-            var reqBundesliga= await ChangeMultipleRequestMessageLeagueId(78, currentTrue);
-            topLeagues[4] = await returnLeague(reqBundesliga);
-            //liga 1
-            var reqLiga1= await ChangeMultipleRequestMessageLeagueId(283, currentTrue);
-            topLeagues[5] = await returnLeague(reqLiga1);
-            return topLeagues;
-
-
-            
-            
-        }     
-        
   
     }
 }

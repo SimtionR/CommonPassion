@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,7 +19,9 @@ import { GaugeModule } from 'angular-gauge';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select'
+import {MatSelectModule} from '@angular/material/select';
+import {SearchBarComponent} from './components/search-bar/search-bar.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,12 +29,15 @@ import {MatSelectModule} from '@angular/material/select'
     RegisterComponent,
     HomeComponent,
     LeaguesComponent,
-    LeagueDatailComponent
+    LeagueDatailComponent,
+    SearchBarComponent,
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     GaugeModule.forRoot(),
