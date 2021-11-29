@@ -17,7 +17,7 @@ namespace CommonPassion_Backend.Data.Servicies
     {
         private readonly HttpClient _httpClient;
         private readonly HttpRequestMessage _requestMessage;
-
+        private const string SEASON_YEAR = "2021";
 
         public TeamService(HttpClient httpClient)
         {
@@ -53,11 +53,17 @@ namespace CommonPassion_Backend.Data.Servicies
             return await ReturnTeam<ApiTeamSeason>(_requestMessage);
         }
 
+        public async Task<ApiTeam> GetTeamsFromLeague(int leagueId)
+        {
+            this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/teams?league={leagueId}&season={SEASON_YEAR}");
+            return await ReturnTeam<ApiTeam>(_requestMessage);
+        }
 
 
-       
 
-     
+
+
+
         private async Task<T> ReturnTeam<T>(HttpRequestMessage _requestMessage)
         {
             using (var response = await _httpClient.SendAsync(_requestMessage))
@@ -83,8 +89,7 @@ namespace CommonPassion_Backend.Data.Servicies
             this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/teams/seasons?team={id}");
         }
 
-
-
+     
     }
        
     }

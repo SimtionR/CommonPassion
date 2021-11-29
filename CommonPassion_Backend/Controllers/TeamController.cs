@@ -15,17 +15,19 @@ namespace CommonPassion_Backend.Controllers
     public class TeamController : ApiController
     {
         private readonly ITeamService _teamService;
+        private readonly ILeagueService _leagueService;
 
-        public TeamController(ITeamService teamService)
+        public TeamController(ITeamService teamService, ILeagueService leagueService)
         {
             _teamService = teamService;
+            _leagueService = leagueService;
         }
 
         //gets team info based on id
 
         [HttpGet]
-        [Route("id={id}")]
-        public async Task<ActionResult<ApiTeam>> TeamById(int id )
+        [Route("{id}")]
+        public async Task<ActionResult<ApiTeam>> TeamById(int id)
         {
             var team = await _teamService.GetTeamInfo(id);
 
@@ -35,7 +37,7 @@ namespace CommonPassion_Backend.Controllers
 
         //stats of the team based on season 
         [HttpGet]
-        [Route("stats/id={id}&&leagueId={leagueId}&&season={season}")]
+        [Route("stats/{id}&{leagueId}&{season}")]
         public async Task<ActionResult<ApiTeamSeason>> TeamStatsById(int id, int leagueId, int season)
         {
             var team = await this._teamService.GetTeamStats(leagueId, season, id);
@@ -46,13 +48,23 @@ namespace CommonPassion_Backend.Controllers
 
         //all avaialble seasons of a team  based on teamID
         [HttpGet]
-        [Route("allSeasons/id={id}")]
-        public async Task<ActionResult<ApiAvaialbleSeasons>> TeamSeasons( int id)
+        [Route("allSeasons/{id}")]
+        public async Task<ActionResult<ApiAvaialbleSeasons>> TeamSeasons(int id)
         {
             var team = await this._teamService.GetTeamSeasons(id);
             return returnTeam<ApiAvaialbleSeasons>(team);
 
         }
+
+        [HttpGet]
+        [Route("byLeague/{leagueId}")]
+        public async Task<ActionResult<ApiTeam>> GetTeamByLeauge(int leagueId)
+        {
+            var teams = await this._teamService.GetTeamsFromLeague(leagueId);
+            return returnTeam<ApiTeam>(teams);
+        }
+
+
 
 
         [HttpGet]
@@ -63,7 +75,7 @@ namespace CommonPassion_Backend.Controllers
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/teams?search=barcelona"),
+                RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/teams/statistics?league=140&season=2021&team=529"),
                 Headers =
     {
         { "x-rapidapi-host", "api-football-v1.p.rapidapi.com" },

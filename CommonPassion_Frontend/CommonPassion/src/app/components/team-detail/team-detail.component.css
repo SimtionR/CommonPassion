@@ -1,0 +1,42 @@
+.club-info.details-wrapper{
+    max-width: 900px;
+    margin: 20px auto;
+    position: relative;
+
+
+    
+}
+
+.club-banner-img, .club-stadium-img
+{
+    height:200px;
+
+}
+
+
+
+.club-stadium-name, .club-stadium-capacity{
+
+        margin-top: 5px;
+        color:#fff;
+        font-weight: 700;
+        font-size: 18px; 
+        margin-top: 20px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    
+}
+
+
+
+.club-form
+{
+    margin-top: 100px;
+}
+
+.club-goals, .club-statistics, .club-form{
+    font-weight: 700;
+    font-size:18px;
+    color:#fff;
+}

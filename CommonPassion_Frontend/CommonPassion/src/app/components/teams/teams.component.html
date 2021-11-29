@@ -1,0 +1,19 @@
+<div class="boxes">
+    <ng-container *ngFor="let response of modelTeams?.response">
+    <div class="box" (click)="openTeamDetails(response.team.id)">
+        <div class="box-thumb-container">
+            <img
+            src="{{response.team.logo}}"
+            alt="thumbnail"
+            class="center"
+            />
+        </div>
+        <div class="box-name">
+            <p class="box-name">{{response.team.name}}</p>
+        </div>
+        <div class="box-country-name">
+            <p class="box-country-name">Founded in : {{response.team.founded}}</p>
+        </div>
+    </div>
+</ng-container>
+</div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TeamService } from '../../services/team.service';
+import {ActivatedRoute} from '@angular/router'
+import { ApiTeam } from '../../models/modelTeam';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +11,12 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   sort:string;
+  modelTeams: ApiTeam;
 
-  constructor() { }
+  constructor(private teamService: TeamService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+   
   }
 
 }

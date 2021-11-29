@@ -21,6 +21,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {SearchBarComponent} from './components/search-bar/search-bar.component';
+import { TeamsComponent } from './components/teams/teams.component';
+import { TeamDetailComponent } from './components/team-detail/team-detail.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import {SearchBarComponent} from './components/search-bar/search-bar.component';
     LeaguesComponent,
     LeagueDatailComponent,
     SearchBarComponent,
+    TeamsComponent,
+    TeamDetailComponent,
    
   ],
   imports: [

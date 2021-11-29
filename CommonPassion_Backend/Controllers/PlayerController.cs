@@ -21,9 +21,9 @@ namespace CommonPassion_Backend.Controllers
         }
 
 
-        //Players by ID and season
+        //Player by ID and season
         [HttpGet]
-        [Route("id={id}&&season={season}")]
+        [Route("{id}&{season}")]
         public async Task<ActionResult<ApiPlayer>> GetPlayerStatsById(int id, int season)
         {
             var player = await _playerService.GetPlayerStats(id, season);
@@ -33,7 +33,7 @@ namespace CommonPassion_Backend.Controllers
        
         //Stats of players by GameID
         [HttpGet]
-        [Route("game={gameId}")]
+        [Route("{gameId}")]
         public async Task<ActionResult<ApiPlayer>> GetPlayersStatsByGame(int gameId)
         {
             var player = await this._playerService.GetPlayersGameStats(gameId);
@@ -44,7 +44,7 @@ namespace CommonPassion_Backend.Controllers
 
         //Stats of  players by league and season
         [HttpGet]
-        [Route("league={leagueId}&&season={season}")]
+        [Route("{leagueId}&{season}")]
         public async Task<ActionResult<ApiPlayer>> GetPlayersFromLeague(int leagueId, int season)
         {
             var player = await this._playerService.GetPlayersStatsByLeague(leagueId, season);
@@ -56,7 +56,7 @@ namespace CommonPassion_Backend.Controllers
 
         //stats of a team's players based on a season 
         [HttpGet]
-        [Route("team={teamId}&&season={season}")]
+        [Route("{teamId}&{season}")]
         public async Task<ActionResult<ApiPlayer>> GetPlayersFromTeam(int teamId, int season)
         {
 
@@ -68,7 +68,7 @@ namespace CommonPassion_Backend.Controllers
 
         //STATS OF A PLAYER based on NAME + LEAGUE/TEAM + (OPTIONAL ? Season ) 
         [HttpGet]
-        [Route("name={playerName}/teamId={teamId}&&leagueId={leagueId}&&season={season}")]
+        [Route("{playerName}/{teamId}&{leagueId}&{season}")]
         public async Task<ActionResult<ApiPlayer>> GetPlayerByName(string playerName, int teamId=0, int leagueId=0, int season=0)
         {
             if (teamId == 0 && leagueId == 0)

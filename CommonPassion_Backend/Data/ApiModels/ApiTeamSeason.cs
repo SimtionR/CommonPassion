@@ -96,7 +96,7 @@ namespace CommonPassion_Backend.Data.ApiModels
 
         public class Goals2
         {
-            public For2 _for { get; set; }
+            public For2 @for { get; set; }
             public Against2 against { get; set; }
         }
 
