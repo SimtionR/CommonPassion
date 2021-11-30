@@ -85,7 +85,7 @@ namespace CommonPassion_Backend.Controllers
 
 
 
-
+        //Could change with function from functionHelper
         private ActionResult<T> playerChecked<T>(T player)
         {
             if (player != null)

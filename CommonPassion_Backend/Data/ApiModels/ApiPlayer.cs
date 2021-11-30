@@ -112,6 +112,7 @@ public class Player
         public string logo { get; set; }
         public string flag { get; set; }
         public object season { get; set; }
+        public Standing[][] standings { get; set; } // added from standings 
     }
 
     public class Games

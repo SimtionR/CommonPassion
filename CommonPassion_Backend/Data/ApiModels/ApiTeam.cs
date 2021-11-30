@@ -42,7 +42,7 @@ namespace CommonPassion_Backend.Data.ApiModels
             public League? league { get; set; }
             public string? form { get; set; }
             public Fixtures? fixtures { get; set; }
-            public GoalsT? goals { get; set; }
+            public GoalsTeam? goals { get; set; }
             public Biggest? biggest { get; set; }
             public Clean_Sheet? clean_sheet { get; set; }
             public Failed_To_Score? failed_to_score { get; set; }
@@ -123,7 +123,7 @@ namespace CommonPassion_Backend.Data.ApiModels
             public int total { get; set; }
         }
 
-        public class GoalsT
+        public class GoalsTeam
         {
             public For _for { get; set; }
             public Against against { get; set; }

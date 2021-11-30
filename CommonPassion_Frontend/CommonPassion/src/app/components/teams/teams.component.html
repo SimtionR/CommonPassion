@@ -1,6 +1,6 @@
 <div class="boxes">
     <ng-container *ngFor="let response of modelTeams?.response">
-    <div class="box" (click)="openTeamDetails(response.team.id)">
+    <div class="box" (click)="openTeamDetails2(response.team.id,leagueId)">
         <div class="box-thumb-container">
             <img
             src="{{response.team.logo}}"

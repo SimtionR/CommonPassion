@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <div class="row">
     <div class="col-lg-3" *ngFor="let league of leagueApi">
       <div class="card" style="width: 18rem;">
@@ -11,4 +11,20 @@
       </div>
     </div>
   </div>
+</div> -->
+
+
+<div class="boxes">
+  <ng-container *ngFor="let league of leagueApi">
+  <div class="box" (click)="viewMore(league.response[0].league.id)" >
+      <div class="box-thumb-container">
+          <img
+          src="{{league.response[0].league.logo}}"
+          alt="thumbnail"
+          class="box-league-image"
+          />
+      </div>
+     
+  </div>
+</ng-container>
 </div>

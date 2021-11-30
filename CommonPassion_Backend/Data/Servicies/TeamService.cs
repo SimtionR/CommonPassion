@@ -1,6 +1,7 @@
 ﻿
 using CommonPassion_Backend.Data.ApiModels;
 using CommonPassion_Backend.Data.IServicies;
+using CommonPassion_Backend.Infrastrcture;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace CommonPassion_Backend.Data.Servicies
     {
         private readonly HttpClient _httpClient;
         private readonly HttpRequestMessage _requestMessage;
-        private const string SEASON_YEAR = "2021";
+  
 
         public TeamService(HttpClient httpClient)
         {
@@ -53,9 +54,10 @@ namespace CommonPassion_Backend.Data.Servicies
             return await ReturnTeam<ApiTeamSeason>(_requestMessage);
         }
 
-        public async Task<ApiTeam> GetTeamsFromLeague(int leagueId)
+        public async Task<ApiTeam> GetTeamsFromLeague(int leagueId, int season)
         {
-            this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/teams?league={leagueId}&season={SEASON_YEAR}");
+            season=FunctionHelper.checkingSeason(season);
+            this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/teams?league={leagueId}&season={season}");
             return await ReturnTeam<ApiTeam>(_requestMessage);
         }
 
@@ -63,7 +65,7 @@ namespace CommonPassion_Backend.Data.Servicies
 
 
 
-
+        //coudl use func from FunctionHelper
         private async Task<T> ReturnTeam<T>(HttpRequestMessage _requestMessage)
         {
             using (var response = await _httpClient.SendAsync(_requestMessage))
@@ -81,6 +83,7 @@ namespace CommonPassion_Backend.Data.Servicies
         }
         private void ReqMessageTeamStats(int leagueId, int season, int teamId)
         {
+            season= FunctionHelper.checkingSeason(season);
             this._requestMessage.RequestUri =
                  new Uri($"https://api-football-v1.p.rapidapi.com/v3/teams/statistics?league={leagueId}&season={season}&team={teamId}");
         }

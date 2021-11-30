@@ -1,6 +1,6 @@
 import { CompileShallowModuleMetadata } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { Route } from '@angular/router';
+import { Route, Router } from '@angular/router';
 
 import { RootLeague } from '../../models/RootLeague';
 import { LeaguesService } from '../../services/leagues.service';
@@ -15,22 +15,17 @@ export class LeaguesComponent implements OnInit {
   leagueApi: RootLeague[];
 
 
-  constructor(private leagueService: LeaguesService) { }
+  constructor(private leagueService: LeaguesService, private router: Router) { }
 
   ngOnInit(): void {
-    //  this.leagueService.getLeagueById(39).subscribe(l=> 
-    //  {
-    //   this.leagueApi=l;
-    //   console.log(this.leagueApi);
-    //  }
-    //    );
+ 
     this.leagueService.getImportantLeagues().subscribe(l =>
       {
         this.leagueApi=l;
         console.log(this.leagueApi);
       })
 
-       //console.log(this.league);
+      
        
   }
 
@@ -51,9 +46,9 @@ export class LeaguesComponent implements OnInit {
     return this.leagueService.getImportantLeagues().subscribe(c=> console.log(c));
   }
 
-  viewMore()
+  viewMore(id: any)
   {
-    //this.route.redirectTo()
+     this.router.navigate(["team/leagueId/",id]);
   }
 
   

@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'league/:id', component :LeagueDatailComponent},
   {path: 'league_home', component: LeaguesComponent},
   {path: 'team/leagueId/:id', component: TeamsComponent},
-  {path: 'team/clubId/:id', component: TeamDetailComponent}
+  {path: 'team/clubId/:id/:id2', component: TeamDetailComponent}
 ];
 
 @NgModule({

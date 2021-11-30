@@ -1,6 +1,7 @@
 ﻿
 using CommonPassion_Backend.Data.ApiModels;
 using CommonPassion_Backend.Data.IServicies;
+using CommonPassion_Backend.Infrastrcture;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -37,8 +38,8 @@ namespace CommonPassion_Backend.Controllers
 
         //stats of the team based on season 
         [HttpGet]
-        [Route("stats/{id}&{leagueId}&{season}")]
-        public async Task<ActionResult<ApiTeamSeason>> TeamStatsById(int id, int leagueId, int season)
+        [Route("stats/{id}&{leagueId}/{season?}")]
+        public async Task<ActionResult<ApiTeamSeason>> TeamStatsById(int id, int leagueId, int season=Constants.CURRENT_SEASON)
         {
             var team = await this._teamService.GetTeamStats(leagueId, season, id);
 
@@ -57,10 +58,10 @@ namespace CommonPassion_Backend.Controllers
         }
 
         [HttpGet]
-        [Route("byLeague/{leagueId}")]
-        public async Task<ActionResult<ApiTeam>> GetTeamByLeauge(int leagueId)
+        [Route("byLeague/{leagueId}/{season?}")]
+        public async Task<ActionResult<ApiTeam>> GetTeamByLeauge(int leagueId, int season= Constants.CURRENT_SEASON)
         {
-            var teams = await this._teamService.GetTeamsFromLeague(leagueId);
+            var teams = await this._teamService.GetTeamsFromLeague(leagueId, season);
             return returnTeam<ApiTeam>(teams);
         }
 
@@ -75,7 +76,7 @@ namespace CommonPassion_Backend.Controllers
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/teams/statistics?league=140&season=2021&team=529"),
+                RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/players/topscorers?league=39&season=2020"),
                 Headers =
     {
         { "x-rapidapi-host", "api-football-v1.p.rapidapi.com" },

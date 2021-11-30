@@ -11,6 +11,8 @@ import { TeamService } from '../../services/team.service';
 export class TeamsComponent implements OnInit {
 
   modelTeams: ApiTeam;
+  leagueId: any;
+  
 
   constructor(
     private teamService: TeamService, 
@@ -18,7 +20,8 @@ export class TeamsComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.teamService.getTeamByLeague(140).subscribe(t=> {
+    this.leagueId= this.activatedRoute.snapshot.paramMap.get('id');
+    this.teamService.getTeamByLeague(this.leagueId).subscribe(t=> {
       this.modelTeams=t;
       console.log(t);
     });
@@ -29,6 +32,11 @@ export class TeamsComponent implements OnInit {
   {
     console.log("works");
     this.router.navigate(['team/clubId/', id]);
+  }
+
+  openTeamDetails2(id:any, leagueId:any)
+  {
+    this.router.navigate(['team/clubId/',id, leagueId]);
   }
 
 }

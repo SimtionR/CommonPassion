@@ -5,22 +5,15 @@
                 <div class="club-banner">
                     <img
                         class="club-banner-img"
-                        src="https://www.pngall.com/wp-content/uploads/5/FC-Barcelona-PNG-Image-File.png"
+                        src="{{teamDetails.response?.team.logo}}"
                         alt="background-image"
                     />
                 </div>
             
                 <div class="club-info">
                     <div class="details-wrapper">
-                        <div class="club-stadium">
-                            <h1 class="club-stadium-name">Stadium name</h1>
-                            <h2 class="club-stadium-capacity">Stadium capacity</h2>
-                            <img
-                                class="club-stadium-img"
-                                src="https://cdn2.civitatis.com/espana/barcelona/visita-guiada-camp-nou.jpg"
-                                alt="stadium-image"
-                                />     
-                        </div>
+                            <h1 class="club-name">{{teamDetails.response.team.name}}</h1>
+                        
                     </div>
                 </div>
           </div>
@@ -30,21 +23,21 @@
           <div class="col-sm">
             <div class="club-info">
                 <div class="club-form">
-                    <h1 class="last-games">Last 5 games: </h1>
+                    <p class="last-games">Last 5 games: {{teamDetails.response.form.slice(teamDetails.response.form.length-5)}} </p>
                 </div>
             
             <div class="club-statistics">
                 <div class="club-games">
-                    <h1 class="club-victories">Victories: </h1>
-                    <h2 class="club-draws">Draws: </h2>
-                    <h3 class="club-losses">Losses</h3>
+                    <p class="club-victories">Victories: {{teamDetails.response.fixtures.wins.total}} </p>
+                    <p class="club-draws">Draws: {{teamDetails.response.fixtures.draws.total}} </p>
+                    <p class="club-losses">Losses: {{teamDetails.response.fixtures.loses.total}}</p>
                 </div>
                 
             </div>
             <div class="club-goals">
-                <h1 class="club-goals-for">Goals scored: </h1>
-                <h2 class="club-goals-agaisnt">Goals conceded: </h2>
-                <h3 class="club-goals-difference">Goals difference: </h3>
+                <p class="club-goals-for">Goals scored: {{teamDetails.response.goals.for.total.total}} </p>
+                <p class="club-goals-agaisnt">Goals conceded: {{teamDetails.response.goals.against.total.total}} </p>
+                <p class="club-clean-sheets">Clean-sheets: {{teamDetails.response.clean_sheet.total}}  </p>
             </div>
 
            

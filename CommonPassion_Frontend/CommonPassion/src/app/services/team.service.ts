@@ -22,9 +22,9 @@ export class TeamService {
     return this.http.get(this.teamPath+`${id}`);
   } 
 
-  getTeamStatsBySeason(teamId: any, leaugeId: any, season:any) : Observable<any>
+  getTeamStatsBySeason(teamId: any, leaugeId: any, season: any= 2021) : Observable<any>
   {
-    return this.http.get(this.teamPath+`stats/${teamId}&${leaugeId}&${season}`);
+    return this.http.get(this.teamPath+`stats/${teamId}&${leaugeId}/${season}`);
   }
 
   getTeamByLeague(leagueId: any) : Observable<any>
