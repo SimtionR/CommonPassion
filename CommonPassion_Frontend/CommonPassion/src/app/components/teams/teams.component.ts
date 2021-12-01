@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { ApiTeam } from '../../models/modelTeam';
+import { ApiTeam } from '../../models/api_team'
 import { TeamService } from '../../services/team.service';
 
 @Component({

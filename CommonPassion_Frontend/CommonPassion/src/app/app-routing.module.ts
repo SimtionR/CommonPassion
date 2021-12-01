@@ -8,6 +8,7 @@ import { LeagueDatailComponent } from './components/league-datail/league-datail.
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import {TeamDetailComponent} from './components/team-detail/team-detail.component';
 import {TeamsComponent} from './components/teams/teams.component';
+import {StandingComponent} from './components/standing/standing.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'league/:id', component :LeagueDatailComponent},
   {path: 'league_home', component: LeaguesComponent},
   {path: 'team/leagueId/:id', component: TeamsComponent},
-  {path: 'team/clubId/:id/:id2', component: TeamDetailComponent}
+  {path: 'team/clubId/:id/:id2', component: TeamDetailComponent},
+  {path: 'standing/leagueId/:id', component: StandingComponent}
 ];
 
 @NgModule({

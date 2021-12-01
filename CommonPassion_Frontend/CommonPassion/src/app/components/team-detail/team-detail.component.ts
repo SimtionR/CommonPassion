@@ -29,7 +29,7 @@ export class TeamDetailComponent implements OnInit {
 
     this.teamService.getTeamStatsBySeason(this.clubId,this.leagueId).subscribe(t =>{
       this.teamDetails=t;
-      console.log(this.teamDetails);
+     
     })
     
     

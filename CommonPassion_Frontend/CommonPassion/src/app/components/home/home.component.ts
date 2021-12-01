@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamService } from '../../services/team.service';
 import {ActivatedRoute} from '@angular/router'
-import { ApiTeam } from '../../models/modelTeam';
+import { ApiTeam } from '../../models/api_team';
 
 @Component({
   selector: 'app-home',

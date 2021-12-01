@@ -1,0 +1,44 @@
+<table class="league-table">
+    <thead>
+        <tr>
+            <th>Position</th>
+            <th>Team</th>
+            <th>Matches played</th>
+            <th>Points</th>
+            
+            <th>Goals difference</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <ng-container *ngFor= "let team of standingL.response[0]?.league.standings[0]">
+            
+            <tr  *ngIf="team.team.id==teamId; then selectedTeam else normalTeam">
+               
+            </tr>
+            
+            <ng-template #selectedTeam>
+                <tr class="active-row">
+                <td>{{team.rank}}</td>
+                <td>{{team.team.name}}</td>
+                <td class="matches-played">{{team.all.played}}</td>
+                <td class="points">{{team.points}}</td>          
+                <td class="goal-diff">{{team.goalsDiff}}</td>
+            </tr>   
+            </ng-template>
+
+            <ng-template #normalTeam>
+                <tr style="color: {{getColor(team.description)}}">
+                <td>{{team.rank}}</td>
+                <td>{{team.team.name}}</td>
+                <td class="matches-played">{{team.all.played}}</td>
+                <td class="points">{{team.points}}</td>          
+                <td class="goal-diff">{{team.goalsDiff}}</td>
+            </tr>
+            </ng-template>
+            
+        </ng-container>
+        
+        
+    </tbody>
+</table>

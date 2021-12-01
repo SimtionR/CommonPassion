@@ -40,7 +40,7 @@ namespace CommonPassion_Backend.Controllers
         [HttpGet]
         [Route("stats/{id}&{leagueId}/{season?}")]
         public async Task<ActionResult<ApiTeamSeason>> TeamStatsById(int id, int leagueId, int season=Constants.CURRENT_SEASON)
-        {
+            {
             var team = await this._teamService.GetTeamStats(leagueId, season, id);
 
             return returnTeam<ApiTeamSeason>(team);

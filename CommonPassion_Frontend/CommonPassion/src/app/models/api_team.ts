@@ -1,5 +1,5 @@
-import { League } from "./league";
-import { Paging } from "./Paging";
+import { League, Paging } from "./RootLeague";
+
 
 export interface ApiTeam {
     get: string;

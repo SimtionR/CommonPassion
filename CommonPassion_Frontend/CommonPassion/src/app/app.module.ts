@@ -23,6 +23,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {SearchBarComponent} from './components/search-bar/search-bar.component';
 import { TeamsComponent } from './components/teams/teams.component';
 import { TeamDetailComponent } from './components/team-detail/team-detail.component';
+import { StandingComponent } from './components/standing/standing.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { TeamDetailComponent } from './components/team-detail/team-detail.compon
     SearchBarComponent,
     TeamsComponent,
     TeamDetailComponent,
+    StandingComponent,
    
   ],
   imports: [

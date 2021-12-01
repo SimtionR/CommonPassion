@@ -54,7 +54,7 @@ namespace CommonPassion_Backend.Controllers
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/standings?season=2020&league=39"),
+                RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/standings?season=2021&league=140&team=529"),
                 Headers =
     {
         { "x-rapidapi-host", "api-football-v1.p.rapidapi.com" },
