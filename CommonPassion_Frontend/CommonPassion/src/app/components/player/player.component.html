@@ -1,0 +1,22 @@
+<div class="boxes">
+    <ng-container *ngFor="let response of players?.response">
+    <div class="box" >
+        <div class="box-thumb-container">
+            <img
+            src="{{response.player.photo}}"
+            alt="thumbnail"
+            class="player-iamge"
+            />
+        </div>
+        <div class="box-name">
+            <p class="box-name">{{response.player.name }}</p>
+        </div>
+        <div class="box-player-age">
+            <p class="box-player-age">Age : {{response.player.age}}</p>
+        </div>
+        <div >
+            <p class=box-player-country>Country: {{response.player.birth.country}}</p>
+        </div>
+    </div>
+</ng-container>
+</div>

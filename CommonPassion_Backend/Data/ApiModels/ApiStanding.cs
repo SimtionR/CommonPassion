@@ -29,17 +29,7 @@ namespace CommonPassion_Backend.Data.ApiModels
         public League league { get; set; }
     }
 
-/*    public class League
-    {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string country { get; set; }
-        public string logo { get; set; }
-        public string flag { get; set; }
-        public int season { get; set; }
-        public Standing[][] standings { get; set; }
-    }
-*/
+
     public class Standing
     {
         public int rank { get; set; }

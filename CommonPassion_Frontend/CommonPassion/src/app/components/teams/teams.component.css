@@ -94,7 +94,7 @@
 
     
 
-    .box-name{
+    .box-name, .box-country-name {
         margin-top: 5px;
         color:#fff;
         font-weight: 700;
@@ -106,18 +106,7 @@
         overflow: hidden;
     }
 
-    .box-country-name{
-        
-        color:#fff;
-        font-weight: 700;
-        font-size: 18px;
-        text-align:center;
-        margin-bottom: 20px;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-
-    }
+  
 
  
   

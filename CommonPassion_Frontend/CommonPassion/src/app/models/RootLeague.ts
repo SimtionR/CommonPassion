@@ -1,3 +1,4 @@
+import { Standing } from "./api_standing";
 
 
 
@@ -32,6 +33,7 @@ export interface League {
     name: string;
     type: string;
     logo: string;
+    standings: Standing[][];
 }
 
 export interface Country {

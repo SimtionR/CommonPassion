@@ -22,9 +22,8 @@
 
 .club-name{
 
-        margin-top: 5px;
+       
         color:#fff;
-        
         font-weight: 700;
         font-size: 28px; 
         margin-top: 20px;
@@ -32,7 +31,7 @@
         text-overflow: ellipsis;
         overflow: hidden;
         justify-content: center;
-        margin-left:20px;
+        margin-left:40px;
     
 }
 

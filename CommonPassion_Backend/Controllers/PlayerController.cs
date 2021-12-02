@@ -1,5 +1,6 @@
 ﻿using CommonPassion_Backend.Data.ApiModels;
 using CommonPassion_Backend.Data.IServicies;
+using CommonPassion_Backend.Infrastrcture;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -23,8 +24,8 @@ namespace CommonPassion_Backend.Controllers
 
         //Player by ID and season
         [HttpGet]
-        [Route("{id}&{season}")]
-        public async Task<ActionResult<ApiPlayer>> GetPlayerStatsById(int id, int season)
+        [Route("playerId/{id}/{season?}")]
+        public async Task<ActionResult<ApiPlayer>> GetPlayerStatsById(int id, int season=Constants.CURRENT_SEASON)
         {
             var player = await _playerService.GetPlayerStats(id, season);
             return playerChecked(player);
@@ -44,8 +45,8 @@ namespace CommonPassion_Backend.Controllers
 
         //Stats of  players by league and season
         [HttpGet]
-        [Route("{leagueId}&{season}")]
-        public async Task<ActionResult<ApiPlayer>> GetPlayersFromLeague(int leagueId, int season)
+        [Route("leagueId/{leagueId}/{season?}")]
+        public async Task<ActionResult<ApiPlayer>> GetPlayersFromLeague(int leagueId, int season=Constants.CURRENT_SEASON)
         {
             var player = await this._playerService.GetPlayersStatsByLeague(leagueId, season);
             return playerChecked<ApiPlayer>(player);
@@ -56,8 +57,8 @@ namespace CommonPassion_Backend.Controllers
 
         //stats of a team's players based on a season 
         [HttpGet]
-        [Route("{teamId}&{season}")]
-        public async Task<ActionResult<ApiPlayer>> GetPlayersFromTeam(int teamId, int season)
+        [Route("teamId/{teamId}/{season?}")]
+        public async Task<ActionResult<ApiPlayer>> GetPlayersFromTeam(int teamId, int season=Constants.CURRENT_SEASON)
         {
 
             var player = await this._playerService.GetPlayersStatsByTeam(teamId, season);
@@ -68,7 +69,7 @@ namespace CommonPassion_Backend.Controllers
 
         //STATS OF A PLAYER based on NAME + LEAGUE/TEAM + (OPTIONAL ? Season ) 
         [HttpGet]
-        [Route("{playerName}/{teamId}&{leagueId}&{season}")]
+        [Route("{playerName}/{teamId}&{leagueId}/{season?}")]
         public async Task<ActionResult<ApiPlayer>> GetPlayerByName(string playerName, int teamId=0, int leagueId=0, int season=0)
         {
             if (teamId == 0 && leagueId == 0)

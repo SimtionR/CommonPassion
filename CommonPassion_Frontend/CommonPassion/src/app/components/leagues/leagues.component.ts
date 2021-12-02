@@ -48,7 +48,7 @@ export class LeaguesComponent implements OnInit {
 
   viewMore(id: any)
   {
-     this.router.navigate(["team/leagueId/",id]);
+     this.router.navigate(["team/leagueId/",id])
   }
 
   

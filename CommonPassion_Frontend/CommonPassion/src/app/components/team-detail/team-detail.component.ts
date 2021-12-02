@@ -1,6 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { TeamService } from '../../services/team.service';
 
@@ -18,7 +18,8 @@ export class TeamDetailComponent implements OnInit {
 
   constructor(
     private teamService: TeamService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -34,6 +35,17 @@ export class TeamDetailComponent implements OnInit {
     
     
     
+  }
+
+  viewTeam(teamId: any)
+  {
+    
+    this.router.navigate(["players/teamId/", teamId]);
+  }
+
+  viewTeamTest()
+  {
+    console.log("test");
   }
 
 }

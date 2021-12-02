@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { timeStamp } from 'console';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
@@ -12,9 +11,9 @@ export class PlayerService {
   private playerPath = environment.apiUrl+'/player/';
   constructor(private http: HttpClient) { }
 
-  getPlayerByIdAndSeason(id:any, season: any): Observable<any>
+  getPlayerByIdAndSeason(id:any, season: any = 2021): Observable<any>
   {
-    return this.http.get(this.playerPath+`${id}&${season}`);
+    return this.http.get(this.playerPath+`playerId/${id}/${season}`);
   }
 
   getPlayersByGame(game: any)
@@ -22,17 +21,17 @@ export class PlayerService {
     return this.http.get(this.playerPath+`${game}`);
   }
 
-  getPlayersByLeagueAndSeason(leagueId:any, season: any)
+  getPlayersByLeagueAndSeason(leagueId:any, season: any = 2021)
   {
-    return this.http.get(this.playerPath+`${leagueId}&${season}`);
+    return this.http.get(this.playerPath+`leagueId/${leagueId}/${season}`);
   }
 
-  getPlayersFromTeam(teamId: any, season:any)
+  getPlayersFromTeam(teamId: any, season:any = 2021 )
   {
-    return this.http.get(this.playerPath + `${teamId}&${season}`);
+    return this.http.get(this.playerPath + `teamId/${teamId}/${season}`);
   }
 
-  getPlayerByName(playerName: any, teamId: any, leagueId:any, season: any)
+  getPlayerByName(playerName: any, teamId: any, leagueId:any, season: any = 2021)
   {
     return this.http.get(this.playerPath+ `${playerName}/${teamId}&${leagueId}&${season}`);
   }

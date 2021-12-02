@@ -3,19 +3,24 @@
           <div class="col-sm">
             <div class="details">
                 <div class="club-banner">
+                  
                     <img
                         class="club-banner-img"
-                        src="{{teamDetails.response?.team.logo}}"
+                        src="{{teamDetails?.response?.team?.logo}}"
                         alt="background-image"
                     />
                 </div>
             
                 <div class="club-info">
                     <div class="details-wrapper">
-                            <h1 class="club-name">{{teamDetails.response.team.name}}</h1>
+                            <h1 class="club-name">Team: {{teamDetails?.response?.team.name}}</h1>
                         
                     </div>
                 </div>
+                <button (click)="viewTeam(teamDetails.response.team.id)">
+                  View Team Players
+
+                </button>
           </div>
         </div>
 
@@ -23,21 +28,21 @@
           <div class="col-sm">
             <div class="club-info">
                 <div class="club-form">
-                    <p class="last-games">Last 5 games: {{teamDetails.response.form.slice(teamDetails.response.form.length-5)}} </p>
+                    <p class="last-games">Last 5 games: {{teamDetails?.response?.form.slice(teamDetails?.response?.form.length-5)}} </p>
                 </div>
             
             <div class="club-statistics">
                 <div class="club-games">
-                    <p class="club-victories">Victories: {{teamDetails.response.fixtures.wins.total}} </p>
-                    <p class="club-draws">Draws: {{teamDetails.response.fixtures.draws.total}} </p>
-                    <p class="club-losses">Losses: {{teamDetails.response.fixtures.loses.total}}</p>
+                    <p class="club-victories">Victories: {{teamDetails?.response?.fixtures.wins.total}} </p>
+                    <p class="club-draws">Draws: {{teamDetails?.response?.fixtures.draws.total}} </p>
+                    <p class="club-losses">Losses: {{teamDetails?.response?.fixtures.loses.total}}</p>
                 </div>
                 
             </div>
             <div class="club-goals">
-                <p class="club-goals-for">Goals scored: {{teamDetails.response.goals.for.total.total}} </p>
-                <p class="club-goals-agaisnt">Goals conceded: {{teamDetails.response.goals.against.total.total}} </p>
-                <p class="club-clean-sheets">Clean-sheets: {{teamDetails.response.clean_sheet.total}}  </p>
+                <p class="club-goals-for">Goals scored: {{teamDetails?.response?.goals.for.total.total}} </p>
+                <p class="club-goals-agaisnt">Goals conceded: {{teamDetails?.response?.goals.against.total.total}} </p>
+                <p class="club-clean-sheets">Clean-sheets: {{teamDetails?.response?.clean_sheet.total}}  </p>
             </div>
 
            

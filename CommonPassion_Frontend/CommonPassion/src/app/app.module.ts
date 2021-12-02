@@ -24,6 +24,8 @@ import {SearchBarComponent} from './components/search-bar/search-bar.component';
 import { TeamsComponent } from './components/teams/teams.component';
 import { TeamDetailComponent } from './components/team-detail/team-detail.component';
 import { StandingComponent } from './components/standing/standing.component';
+import { PlayerComponent } from './components/player/player.component';
+import { PlayerDetailComponent } from './components/player-detail/player-detail.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { StandingComponent } from './components/standing/standing.component';
     TeamsComponent,
     TeamDetailComponent,
     StandingComponent,
+    PlayerComponent,
+    PlayerDetailComponent,
    
   ],
   imports: [

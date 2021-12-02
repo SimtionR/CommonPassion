@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { ApiStanding } from '../../models/api_standing';
 import { StandingsService } from '../../services/standings.service';
 
 @Component({
@@ -10,10 +12,11 @@ import { StandingsService } from '../../services/standings.service';
 export class StandingComponent implements OnInit {
 
 
-  standingT: any;
+  standingLeague$: Observable<ApiStanding>;
+  standingTeam: ApiStanding;
   teamId: any;
   leagueId:any;
-  standingL: any;
+  standingLeague: ApiStanding;
   test="#00ff00";
   constructor(private standingService: StandingsService,private activatedRoute: ActivatedRoute) { }
 
@@ -23,14 +26,16 @@ export class StandingComponent implements OnInit {
     this.leagueId= this.activatedRoute.snapshot.paramMap.get('id2');
 
     this.standingService.getStandingByTeam(this.teamId).subscribe(s =>{
-      this.standingT=s;
-      console.log(this.standingT);
+      this.standingTeam=s;
+      console.log(this.standingTeam);
     })
-    console.log('----------------');
+    
     this.standingService.getStandingByLeague(this.leagueId).subscribe(s =>{
-      this.standingL=s;
-      console.log(this.standingL);
+      this.standingLeague=s;
+      console.log(this.standingLeague);
     })
+    // this.standingLeague$= this.standingService.getStandingByLeague(this.leagueId);
+    
   }
 
   getColor(value: string) :string{

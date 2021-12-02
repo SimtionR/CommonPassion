@@ -1,0 +1,58 @@
+.boxes{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
+    margin:20px auto;
+}
+
+
+.box{
+    width: 280px;
+    margin:10px;
+    height:330px;
+    overflow: hidden;
+    border-radius: 5px;
+    background-color: #202020;
+    box-shadow:  4px 3px 8px 0px rgb(200, 152, 44/ 22%);
+    transition-duration:  0.3s;
+    cursor:pointer;
+}
+
+
+.box:hover {
+    box-shadow: 4px 3px 11px 6px rgb(200 152 44 / 46%);
+    transform: translateY(-3px);
+  }
+
+.box-thumb-cotaniner{
+   
+    background-color: #000;
+    position:relative;
+    height: 172px;
+    color:#fff;
+    text-align:center;
+}
+
+.player-iamge{
+  
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    margin-top: 20px;
+    }
+
+    .box-name, .box-player-age, .box-player-country {
+        margin-top: 5px;
+        color:#fff;
+        font-weight: 700;
+        font-size: 18px;
+        text-align: center;
+        
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    
