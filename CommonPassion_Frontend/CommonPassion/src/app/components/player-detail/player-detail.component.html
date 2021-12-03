@@ -1,1 +1,85 @@
-<p>player-detail works!</p>
+<div class="container-fluid">
+    <div class="row">
+
+      <div class="col-sm">
+        <div class="player-details">
+            <div class="player-banner">
+              
+                <img
+                    class="player-banner-img"
+                    src="{{playerDetails?.response[0]?.player.photo}}"
+                    alt="background-image"
+                />
+            </div>
+        
+            <div class="player-info">
+                
+                <p>Name : {{playerDetails?.response[0].player?.name}}<p>
+                <p>Positon : {{playerDetails?.response[0].statistics[0]?.games.position}}</p>  
+                <p>Age : {{playerDetails?.response[0].player?.age}}</p>
+                <p>Birth-date : {{playerDetails?.response[0].player?.birth.date}}</p> 
+                <p>Place of birth: {{playerDetails?.response[0].player?.birth.country}}</p>
+                <p>Nationality: {{playerDetails?.response[0].player?.nationality}}</p>
+                <p>Height : {{playerDetails?.response[0].player?.height}}</p>
+                <p>Weight : {{playerDetails?.response[0].player?.weight}}</p>
+                
+                
+            </div>
+            
+            
+      </div>
+      </div>
+
+      <div class= "col-sm">
+
+        <ng-container >
+            <div *ngIf="playerDetails?.response[0].statistics[0]?.games.position == 'Goalkeeper' then goalkeeper_stats else player_stats"></div>
+            <ng-template #goalkeeper_stats>
+                <div class="goalkeeper-stats">
+                    <p>Games:   {{playerDetails?.response[0].statistics[0]?.games.appearences}} 
+                        Minutes Played: {{ playerDetails?.response[0].statistics[0]?.games.minutes}} </p>
+
+                    <p>Goals conceded: {{playerDetails?.response[0].statistics[0]?.goals.conceded}} 
+                         Saves Made:{{playerDetails?.response[0].statistics[0]?.goals.saves}}  </p>
+
+                    <p>Penalties saved:{{playerDetails?.response[0].statistics[0]?.penalty.saved}}</p>
+                    <p>Yellow cards:{{playerDetails?.response[0].statistics[0]?.cards.yellow}} 
+                        Red cards:{{playerDetails?.response[0].statistics[0]?.cards.red}} </p>
+
+                    <p>Passes completed:{{playerDetails?.response[0].statistics[0]?.passes.total}} 
+                        Accuracy:{{playerDetails?.response[0].statistics[0]?.passes.accuracy}}</p>
+
+                    <p>Assists:{{playerDetails?.response[0].statistics[0]?.goals.assists}}  Key Passes: {{playerDetails?.response[0].statistics[0]?.passes.key}}</p>             
+                </div>
+            </ng-template>
+    
+            <ng-template #player_stats>
+                <div class="player-stats">
+                    <p>Games: {{playerDetails?.response[0].statistics[0]?.games.appearences}} 
+                        Minutes Played: {{ playerDetails?.response[0].statistics[0]?.games.minutes}} </p>
+                    <p>Goals scored:{{playerDetails?.response[0].statistics[0]?.goals.total}}  
+                        Assits:{{playerDetails?.response[0].statistics[0]?.goals.assists}} </p>
+                    <p> Shots: {{playerDetails?.response[0].statistics[0]?.shots.total}} 
+                         Shots on goal: {{playerDetails?.response[0].statistics[0]?.shots.on}}</p>
+                    <p>Passes completed:{{playerDetails?.response[0].statistics[0]?.passes.total}} 
+                        Accuracy:{{playerDetails?.response[0].statistics[0]?.passes.accuracy}}</p>
+                    <p>Yellow cards:{{playerDetails?.response[0].statistics[0]?.cards.yellow}}
+                         Red cards:{{playerDetails?.response[0].statistics[0]?.cards.red}} </p>
+                    <p>Fouls drawn:{{playerDetails?.response[0].statistics[0]?.fouls.drawn}}
+                         Fouls committed : {{playerDetails?.response[0].statistics[0]?.fouls.committed}}</p>
+                    <p>Penalties won:{{playerDetails?.response[0].statistics[0]?.penalty.won}}
+                         Penalties scored:{{playerDetails?.response[0].statistics[0]?.penalty.scored}}</p>
+                    <p>Tackles:{{playerDetails?.response[0].statistics[0]?.tackles.total}} 
+                        Blocks:{{playerDetails?.response[0].statistics[0]?.tackles.blocks}} 
+                            Interceptions:{{playerDetails?.response[0].statistics[0]?.tackles.interceptions}} </p>
+                 
+                </div>    
+            </ng-template>
+        </ng-container>
+       
+      </div>
+
+
+      
+    </div>
+</div>

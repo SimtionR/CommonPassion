@@ -13,12 +13,12 @@ export class StandingsService {
   constructor(private httpClient: HttpClient) { }
 
 
-  getStandingByTeam (teamId: any, season: any =2021) : Observable<any>
+  getStandingByTeam (teamId: any, season: any =environment.CURRENT_SEASON) : Observable<any>
   {
     return this.httpClient.get(this.standingPath+ `team/${teamId}/${season}`);
   }
 
-  getStandingByLeague(leagueId:any, season: any =2021) : Observable<any>
+  getStandingByLeague(leagueId:any, season: any =environment.CURRENT_SEASON) : Observable<any>
   {
     return this.httpClient.get(this.standingPath+`league/${leagueId}/${season}`);
   }

@@ -11,7 +11,7 @@ export class PlayerService {
   private playerPath = environment.apiUrl+'/player/';
   constructor(private http: HttpClient) { }
 
-  getPlayerByIdAndSeason(id:any, season: any = 2021): Observable<any>
+  getPlayerByIdAndSeason(id:any, season: any = environment.CURRENT_SEASON): Observable<any>
   {
     return this.http.get(this.playerPath+`playerId/${id}/${season}`);
   }
@@ -21,17 +21,17 @@ export class PlayerService {
     return this.http.get(this.playerPath+`${game}`);
   }
 
-  getPlayersByLeagueAndSeason(leagueId:any, season: any = 2021)
+  getPlayersByLeagueAndSeason(leagueId:any, season: any = environment.CURRENT_SEASON)
   {
     return this.http.get(this.playerPath+`leagueId/${leagueId}/${season}`);
   }
 
-  getPlayersFromTeam(teamId: any, season:any = 2021 )
+  getPlayersFromTeam(teamId: any, season:any = environment.CURRENT_SEASON )
   {
     return this.http.get(this.playerPath + `teamId/${teamId}/${season}`);
   }
 
-  getPlayerByName(playerName: any, teamId: any, leagueId:any, season: any = 2021)
+  getPlayerByName(playerName: any, teamId: any, leagueId:any, season: any = environment.CURRENT_SEASON)
   {
     return this.http.get(this.playerPath+ `${playerName}/${teamId}&${leagueId}&${season}`);
   }

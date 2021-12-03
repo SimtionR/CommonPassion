@@ -39,7 +39,7 @@ namespace CommonPassion_Backend.Controllers
         }
 
         [HttpGet]
-        [Route("yelloeCards/{leagueId}/{season?}")]
+        [Route("yellowCards/{leagueId}/{season?}")]
         public async Task<ActionResult<ApiPlayerStanding>> GetMostYellowCardsFromLeague(int leagueId, int season = Constants.CURRENT_SEASON)
         {
             var yellowCards = await this._playerStanding.GetMostYellowCardsFromLeague(leagueId, season);

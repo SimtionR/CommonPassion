@@ -1,6 +1,6 @@
 <div class="boxes">
     <ng-container *ngFor="let response of players?.response">
-    <div class="box" >
+    <div class="box" (click)="openPlayerDetails(response?.player?.id)">
         <div class="box-thumb-container">
             <img
             src="{{response.player.photo}}"
@@ -15,7 +15,7 @@
             <p class="box-player-age">Age : {{response.player.age}}</p>
         </div>
         <div >
-            <p class=box-player-country>Country: {{response.player.birth.country}}</p>
+            <p class="box-player-coutry">Country: {{response.player.birth.country}}</p>
         </div>
     </div>
 </ng-container>

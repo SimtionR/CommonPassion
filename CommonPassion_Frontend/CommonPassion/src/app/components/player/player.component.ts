@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PlayerService } from '../../services/player.service';
 
 @Component({
@@ -11,7 +11,9 @@ export class PlayerComponent implements OnInit {
   teamId: any;
 
   players: any;
-  constructor(private playerService: PlayerService, private activatedRoute: ActivatedRoute) { }
+  constructor(private playerService: PlayerService,
+              private activatedRoute: ActivatedRoute,
+              private router : Router) { }
 
   ngOnInit(): void {
     this.teamId= this.activatedRoute.snapshot.paramMap.get('id');
@@ -23,6 +25,12 @@ export class PlayerComponent implements OnInit {
       })
 
 
+  }
+
+  openPlayerDetails(id: any)
+  {
+    
+    this.router.navigate(['player/playerId/', id]);
   }
 
 }
