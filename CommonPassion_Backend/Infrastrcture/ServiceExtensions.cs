@@ -29,7 +29,9 @@ namespace CommonPassion_Backend.Infrastrcture
                 AddTransient<IPlayerService, PlayerService>().
                 AddTransient<IIdentityService, IdentityService>().
                 AddTransient<IStandingSerivce, StandingService>().
-                AddTransient<IPlayerStanding, PlayerStanding>();
+                AddTransient<IPlayerStanding, PlayerStanding>().
+                AddTransient<IFixtureService, FixtureService>().
+                AddTransient<ICoachService, CoachService>();
                 
         }
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CommonPassion_Backend.Data.ApiModels
+﻿namespace CommonPassion_Backend.Data.ApiModels
 {
     public class ApiTeamSeason
 
@@ -28,7 +22,7 @@ namespace CommonPassion_Backend.Data.ApiModels
 
         public class Response2
         {
-            public League2 league { get; set; }
+            public League league { get; set; }
             public Team2 team { get; set; }
             public string form { get; set; }
             public Fixtures2 fixtures { get; set; }
@@ -41,15 +35,7 @@ namespace CommonPassion_Backend.Data.ApiModels
             public Cards2 cards { get; set; }
         }
 
-        public class League2
-        {
-            public int id { get; set; }
-            public string name { get; set; }
-            public string country { get; set; }
-            public string logo { get; set; }
-            public string flag { get; set; }
-            public int season { get; set; }
-        }
+        
 
         public class Team2
         {

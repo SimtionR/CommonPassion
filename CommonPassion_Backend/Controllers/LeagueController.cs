@@ -52,7 +52,7 @@ namespace CommonPassion_Backend.Controllers
 
         [HttpGet]
         [Route("clubId/{id}/{current?}")]
-        public async Task<ActionResult<ApiLeague>> GetLeagueByTeamId(int id, string current="false")
+        public async Task<ActionResult<ApiLeague>> GetLeagueByTeamId(int id, string current="false") //ramane de vazut 
         {
             var league = await this._leagueService.GetLeagueByTeamId(id, current);
             return Result(league);
@@ -113,7 +113,7 @@ namespace CommonPassion_Backend.Controllers
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/leagues?search=Romania"),
+                RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/leagues?id=39"),
                 Headers =
     {
         { "x-rapidapi-host", "api-football-v1.p.rapidapi.com" },

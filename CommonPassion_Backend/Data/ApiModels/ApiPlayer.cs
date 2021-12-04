@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace CommonPassion_Backend.Data.ApiModels
 {
     public class ApiPlayer
@@ -79,7 +74,7 @@ public class Player
     public class Statistic
     {
         public Team team { get; set; }
-        public League league { get; set; }
+        public LeagueWithStanding league { get; set; }
         public Games games { get; set; }
         public int? offsides { get; set; } // in plus de la in game
         public Substitutes substitutes { get; set; }
@@ -104,7 +99,7 @@ public class Player
         public bool national { get; set; }//same
     }
 
-    public class League
+    public class LeagueWithStanding
     {
         public int? id { get; set; }
         public string name { get; set; }

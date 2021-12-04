@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static CommonPassion_Backend.Data.ApiModels.ApiTeam;
-
 namespace CommonPassion_Backend.Data.ApiModels
 {
     public class ApiStanding
@@ -26,7 +20,7 @@ namespace CommonPassion_Backend.Data.ApiModels
 
     public class ResponseStanding
     {
-        public League league { get; set; }
+        public LeagueWithStanding league { get; set; }
     }
 
 
