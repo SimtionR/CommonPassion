@@ -16,22 +16,22 @@ export class PlayerService {
     return this.http.get(this.playerPath+`playerId/${id}/${season}`);
   }
 
-  getPlayersByGame(game: any)
+  getPlayersByGame(game: any) :Observable<any>
   {
-    return this.http.get(this.playerPath+`${game}`);
+    return this.http.get(this.playerPath+`${game}`); 
   }
 
-  getPlayersByLeagueAndSeason(leagueId:any, season: any = environment.CURRENT_SEASON)
+  getPlayersByLeagueAndSeason(leagueId:any, season: any = environment.CURRENT_SEASON) :Observable<any>
   {
     return this.http.get(this.playerPath+`leagueId/${leagueId}/${season}`);
   }
 
-  getPlayersFromTeam(teamId: any, season:any = environment.CURRENT_SEASON )
+  getPlayersFromTeam(teamId: any, season:any = environment.CURRENT_SEASON ) :Observable<any>
   {
     return this.http.get(this.playerPath + `teamId/${teamId}/${season}`);
   }
 
-  getPlayerByName(playerName: any, teamId: any, leagueId:any, season: any = environment.CURRENT_SEASON)
+  getPlayerByName(playerName: any, teamId: any, leagueId:any, season: any = environment.CURRENT_SEASON) :Observable<any>
   {
     return this.http.get(this.playerPath+ `${playerName}/${teamId}&${leagueId}&${season}`);
   }

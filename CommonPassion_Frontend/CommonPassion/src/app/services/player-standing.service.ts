@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -11,22 +12,22 @@ export class PlayerStandingService {
   constructor(private http : HttpClient) { }
 
 
-  getBestScorers(leagueId: any, season: any = environment.CURRENT_SEASON)
+  getBestScorers(leagueId: any, season: any = environment.CURRENT_SEASON) :Observable<any>
   {
     return this.http.get(this.standingPath+ `scorers/${leagueId}/${season}`);
   }
 
-  getMostAssits(leagueId: any, season: any = environment.CURRENT_SEASON)
+  getMostAssits(leagueId: any, season: any = environment.CURRENT_SEASON) :Observable<any>
   {
-    return this.http.get(this.standingPath +`mostAssits/${leagueId}/${season}`);
+    return this.http.get(this.standingPath +`mostAssists/${leagueId}/${season}`);
   }
 
-  getMostYellowCards(leagueId: any, season: any = environment.CURRENT_SEASON)
+  getMostYellowCards(leagueId: any, season: any = environment.CURRENT_SEASON) :Observable<any>
   {
     return this.http.get(this.standingPath+`yellowCards/${leagueId}/${season}`);
   }
 
-  getMostRedCards(leagueId: any, season : any = environment.CURRENT_SEASON)
+  getMostRedCards(leagueId: any, season : any = environment.CURRENT_SEASON) :Observable<any>
   {
     return this.http.get(this.standingPath+`redCards/${leagueId}/${season}`);
   }
