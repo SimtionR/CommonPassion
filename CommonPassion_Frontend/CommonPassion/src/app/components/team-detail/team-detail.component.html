@@ -17,10 +17,11 @@
                         
                     </div>
                 </div>
-                <button (click)="viewTeam(teamDetails.response.team.id)">
-                  View Team Players
-
+                <button type="button" class="btn btn-info" (click)="viewTeam(teamDetails.response.team.id)">
+                  View team players
                 </button>
+
+                
 
                 <div class="club-info">
                   <div class="club-form">
@@ -49,43 +50,10 @@
 
           <div class="col-sm">
 
-            <ng-container *ngFor = "let fixtures of nextFixtures?.response ">
-              <table class="fixture-table">
-                <thead >
-  
-                  <th></th>
-                <th>Home team</th>
-                <th>{{fixtures.league.name}}</th>
-                <th>Away Team</th>
-                <th></th>
-  
-                </thead>
-  
-                <tbody>
-                  <td>
-                    <img
-                      class="home-team-img"
-                      src="{{fixtures?.teams?.home?.logo}}"
-                      alt="background-image"
-                    />
-                  </td>
-                  <td>{{fixtures.teams.home.name}}</td>
-                  <td>{{fixtures.fixture.date}}</td>
-                  <td>{{fixtures.teams.away.name}}</td>
-                  <td>
-                    <img
-                      class="away-team-img"
-                      src="{{fixtures.teams.away.logo}}"
-                      alt="background-image"
-                    />
-                  </td>
-                </tbody>
-              </table>
-           
 
-            </ng-container>
+            <app-fixture></app-fixture>
 
-          
+
           </div>
 
 

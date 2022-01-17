@@ -13,16 +13,16 @@ import { TeamService } from '../../services/team.service';
 export class TeamDetailComponent implements OnInit {
 
   teamDetails: any;
-  //routeSub: Subscription;
+ 
   leagueId :any;
   clubId:any;
-  nextFixtures : any;
+ 
 
   constructor(
     private teamService: TeamService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private fixtureService: FixtureService
+   
     ) { }
 
   ngOnInit(): void {
@@ -35,10 +35,7 @@ export class TeamDetailComponent implements OnInit {
       this.teamDetails=t;
 
 
-      this.fixtureService.getNextClubFixtures(this.clubId).subscribe( f => {
-        this.nextFixtures= f;
-        console.log(this.nextFixtures);
-      });
+     
      
     })
     
@@ -52,9 +49,5 @@ export class TeamDetailComponent implements OnInit {
     this.router.navigate(["players/teamId/", teamId]);
   }
 
-  viewTeamTest()
-  {
-    console.log("test");
-  }
 
 }

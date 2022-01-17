@@ -1,1 +1,38 @@
-<p>fixture works!</p>
+
+<ng-container *ngFor = "let fixtures of nextFixtures?.response ">
+    <table class="fixture-table">
+      <thead >
+
+       
+      <th>{{fixtures.teams.home.name}}</th>
+      <th></th>
+      <th>{{fixtures.league.name}}</th>
+      <th></th>
+      <th>{{fixtures.teams.away.name}}</th>
+      
+
+      </thead>
+
+      <tbody>
+        <td>
+          <img
+            class="home-team-img"
+            src="{{fixtures?.teams?.home?.logo}}"
+            alt="background-image"
+          />
+        </td>   
+        <td></td>
+        <td>{{fixtures.fixture.date.substr(0,10)}} - {{fixtures.fixture.date.substr(11,5)}}</td>
+        <td></td>
+        <td>
+          <img
+            class="away-team-img"
+            src="{{fixtures.teams.away.logo}}"
+            alt="background-image"
+          />
+        </td>
+      </tbody>
+    </table>
+ 
+
+  </ng-container>
