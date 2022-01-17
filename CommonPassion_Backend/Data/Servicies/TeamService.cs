@@ -40,6 +40,12 @@ namespace CommonPassion_Backend.Data.Servicies
             return await ReturnTeam<ApiTeam>(_requestMessage);
         }
 
+        public async  Task<ApiTeam> GetTeamInfo2(int teamid)
+        {
+            this._requestMessage.RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/teams?league=39&season=2021");
+            var teams = await ReturnTeam<ApiTeam>(_requestMessage);
+            return teams;
+        }
 
 
         public async Task<ApiAvaialbleSeasons> GetTeamSeasons(int teamId)
@@ -92,7 +98,7 @@ namespace CommonPassion_Backend.Data.Servicies
             this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/teams/seasons?team={id}");
         }
 
-     
+       
     }
        
     }

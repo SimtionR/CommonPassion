@@ -1,7 +1,9 @@
 ﻿using CommonPassion_Backend.Data.ApiModels;
 using CommonPassion_Backend.Data.Entities;
 using CommonPassion_Backend.Data.IServicies;
+using CommonPassion_Backend.Data.Models.League;
 using CommonPassion_Backend.Data.Processors;
+using CommonPassion_Backend.Domain;
 using CommonPassion_Backend.Infrastrcture;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -102,7 +104,112 @@ namespace CommonPassion_Backend.Controllers
             return Result(league);
         }
 
+
+        //testing 
+        [HttpGet]
+        [Route("leagueById/ReqObject/{leagueId}")]
+        public async Task<ActionResult<LeagueResponseModel>> GetLeagueByReqLeagueId(int leagueId)
+        {
+            var requestLeague = await this._leagueService.GetLeagueByReqLeagueId(leagueId);
+            if (requestLeague == null)
+                return NotFound();
+
+
+            /*  var league = new LeagueModel
+              {
+                  league = new Domain.League
+                  {
+                      id = requestLeague.response[0].league.id,
+                      name = requestLeague.response[0].league.name,
+                      logo = requestLeague.response[0].league.logo,
+                      type = requestLeague.response[0].league.type
+                  },
+
+
+                  seasons = (Domain.Season[])requestLeague.response[0].seasons.Select(x => new Domain.Season { current = x.current, end = x.end, start = x.start, year = x.year })
+
+              };
+  */
+            var league = new Domain.LeagueModel
+            {
+                paging = new Domain.LeagueModel.Paging { current = requestLeague.paging.current, total = requestLeague.paging.total },
+                parameters = new Domain.LeagueModel.Parameters { id = requestLeague.parameters.id },
+                response = new Domain.LeagueModel.Response[]
+                {
+                   new LeagueModel.Response
+                   {
+                       country = new Domain.LeagueModel.Country
+                       {
+                           code = requestLeague.response[0].country.code,
+                           flag = requestLeague.response[0].country.flag,
+                           name = requestLeague.response[0].country.name
+                       },
+
+                       league = new Domain.LeagueModel.League
+                       {
+                           id = requestLeague.response[0].league.id,
+                           logo = requestLeague.response[0].league.logo,
+                           name = requestLeague.response[0].league.name,
+                           type =  requestLeague.response[0].league.type
+                       },
+                       seasons = (LeagueModel.Season[])requestLeague.response[0].seasons.Select( x=> new Domain.LeagueModel.Season
+                       {
+                           current = x.current,
+                           end = x.end,
+                           start = x.start,
+                           year = x.year 
+                       })
+  
+                   }
+                }
+                
+              
+            };
+
+
+            var responseLeague = new LeagueResponseModel
+            {
+                paging = new LeagueResponseModel.Paging { current = league.paging.current, total = league.paging.total },
+                parameters = new LeagueResponseModel.Parameters { id = league.parameters.id },
+                response = new LeagueResponseModel.Response[]
+                {
+                    new LeagueResponseModel.Response
+                    {
+                        country = new LeagueResponseModel.Country
+                        {
+                            code = requestLeague.response[0].country.code,
+                            flag = requestLeague.response[0].country.flag,
+                            name = requestLeague.response[0].country.name
+                        },
+
+                        league = new LeagueResponseModel.League
+                        {
+
+                            id = requestLeague.response[0].league.id,
+                            logo = requestLeague.response[0].league.logo,
+                            name = requestLeague.response[0].league.name,
+                            type = requestLeague.response[0].league.type
+                        },
+                        seasons = (LeagueResponseModel.Season[])requestLeague.response[0].seasons.Select(x => new LeagueResponseModel.Season
+                        {
+                            start = x.start,
+                            end = x.end,
+                            year = x.year,
+                            current = x.current
+                        })
+
+
+                    }
+
+                }
+            };
+
+            return responseLeague;
+                
+        }
+
        
+
 
 
         [HttpGet]
@@ -113,7 +220,7 @@ namespace CommonPassion_Backend.Controllers
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/leagues?id=39"),
+                RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/leagues"),
                 Headers =
     {
         { "x-rapidapi-host", "api-football-v1.p.rapidapi.com" },

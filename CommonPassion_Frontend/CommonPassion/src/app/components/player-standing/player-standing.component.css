@@ -55,6 +55,7 @@
     }
 
     .standing-table th, .league-table td{
+        
         width: 200px;
         padding: 12px 15px;
     }

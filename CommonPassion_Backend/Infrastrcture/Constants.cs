@@ -10,6 +10,8 @@ namespace CommonPassion_Backend.Infrastrcture
     {
         public const int CURRENT_SEASON = 2021;
         public const int MIN_AVAIABLE_SEASON = 2000;
+        public const string CURR_TRUE = "true";
+        public const string CURR_FALSE = "false";
        
     }
 }

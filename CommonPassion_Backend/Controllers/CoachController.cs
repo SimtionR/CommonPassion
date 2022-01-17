@@ -1,4 +1,5 @@
 ﻿using CommonPassion_Backend.Data.ApiModels;
+using CommonPassion_Backend.Data.IServicies;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,19 +12,37 @@ namespace CommonPassion_Backend.Controllers
 {
     public class CoachController : ApiController
     {
+        private readonly ICoachService _coachService;
+
+        public CoachController(ICoachService coachService)
+        {
+            _coachService = coachService;
+        }
+
         [HttpGet]
         [Route("teamId/{teamId}")]
-        public async Task<ApiCoach> GetCoachByTeamId(int teamId)
+        public async Task<ActionResult<ApiCoach>> GetCoachByTeamId(int teamId)
         {
-
+            var coach = await this._coachService.GetCoachByTeamId(teamId);
+            return checkedCoach(coach);
         }
 
 
         [HttpGet]
         [Route("/name/{coachName}")]
-        public async Task<ApiCoach> GetCoachByName(string coachName)
+        public async Task<ActionResult<ApiCoach>> GetCoachByName(string coachName)
         {
+            var coach = await this._coachService.GetCoachByName(coachName);
+            return checkedCoach(coach);
+        }
 
+
+
+        private ActionResult<ApiCoach> checkedCoach(ApiCoach coach)
+        {
+            if (coach != null)
+                return coach;
+            else return NotFound();
         }
 
 

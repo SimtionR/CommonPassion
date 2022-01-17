@@ -34,29 +34,29 @@ export class StandingComponent implements OnInit {
       this.standingLeague=s;
       console.log(this.standingLeague);
     })
-    // this.standingLeague$= this.standingService.getStandingByLeague(this.leagueId);
+
     
   }
 
   getColor(value: string) :string{
     if( value =="Promotion - Champions League (Group Stage)"){
-      //console.log("wtf");
+      
       return '#4d4dff';
     }
     else if(value =="Promotion - Europa League (Group Stage)")
     {
-      console.log("1");
+      //verifica de ce apar mai multe console log uri in if-uri la debug
       return '#ffff00';
     }
     else if (value =="Promotion - Europa Conference League (Qualification)")
     { 
-      //console.log("?");
+      
       return "#ffff99";
      
     }
     else if (value?.includes("Relegation"))
     {
-      //console.log("merge");
+      
       return  "#990000;"
     }
    

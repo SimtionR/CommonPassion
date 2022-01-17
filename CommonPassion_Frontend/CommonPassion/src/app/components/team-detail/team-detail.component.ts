@@ -2,6 +2,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { FixtureService } from '../../services/fixture.service';
 import { TeamService } from '../../services/team.service';
 
 @Component({
@@ -15,11 +16,13 @@ export class TeamDetailComponent implements OnInit {
   //routeSub: Subscription;
   leagueId :any;
   clubId:any;
+  nextFixtures : any;
 
   constructor(
     private teamService: TeamService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private fixtureService: FixtureService
     ) { }
 
   ngOnInit(): void {
@@ -30,6 +33,12 @@ export class TeamDetailComponent implements OnInit {
 
     this.teamService.getTeamStatsBySeason(this.clubId,this.leagueId).subscribe(t =>{
       this.teamDetails=t;
+
+
+      this.fixtureService.getNextClubFixtures(this.clubId).subscribe( f => {
+        this.nextFixtures= f;
+        console.log(this.nextFixtures);
+      });
      
     })
     

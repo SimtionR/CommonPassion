@@ -1,14 +1,12 @@
 ﻿using CommonPassion_Backend.Data.ApiModels;
-using CommonPassion_Backend.Data.Entities;
 using CommonPassion_Backend.Data.IServicies;
+using CommonPassion_Backend.Data.Models.Request;
 using CommonPassion_Backend.Infrastrcture;
-using Microsoft.Net.Http.Headers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CommonPassion_Backend.Data.Servicies
@@ -37,7 +35,7 @@ namespace CommonPassion_Backend.Data.Servicies
         {
           
            
-                this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/leagues?current={current}");
+                this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/leagues");
 
 
 
@@ -64,6 +62,25 @@ namespace CommonPassion_Backend.Data.Servicies
         {
             ChangeRequestMessageTeamId(id,current);
             return await returnLeague(_requestMessage);
+        }
+
+        public async Task<IEnumerable<ResponseLeague>> GetImportantLeaguesTest()
+        {
+
+            int[] leaguesChcked = new int[] { 39, 135, 140, 61, 78, 283};
+
+
+            this._requestMessage.RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/leagues?current=true");
+            using(var resposne = await this._httpClient.SendAsync(this._requestMessage))
+            {
+                resposne.EnsureSuccessStatusCode();
+                var responseApi = await resposne.Content.ReadFromJsonAsync<ApiLeague>();
+
+                var leagues = responseApi.response.Where(l => leaguesChcked.Contains(l.league.id)).OrderByDescending(l=>l.league.name);
+
+                return leagues;
+            }
+         
         }
 
         public async Task<IEnumerable<ApiLeague>> GetTop5_1Leagues()
@@ -94,6 +111,8 @@ namespace CommonPassion_Backend.Data.Servicies
             return topLeagues;
 
         }
+
+   
 
         public async Task<ApiLeague> GetLeagueByCountryName(string name)
         {
@@ -162,12 +181,20 @@ namespace CommonPassion_Backend.Data.Servicies
                 return league;
             }
         }
-     
 
+        //testing 
+        public async Task<LeagueRequestModel> GetLeagueByReqLeagueId(int leagueId)
+        {
+            this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/leagues?id={leagueId}&current=true");
 
+            using (var response = await _httpClient.SendAsync(this._requestMessage))
+            {
+                response.EnsureSuccessStatusCode();
+                var league = await response.Content.ReadFromJsonAsync<LeagueRequestModel>();
 
-    
+                return league;
+            }
 
-  
+        }
     }
 }

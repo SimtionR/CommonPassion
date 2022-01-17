@@ -1,9 +1,6 @@
 ﻿using CommonPassion_Backend.Data.ApiModels;
-using CommonPassion_Backend.Data.Entities;
-using System;
+using CommonPassion_Backend.Data.Models.Request;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CommonPassion_Backend.Data.IServicies
@@ -19,6 +16,10 @@ namespace CommonPassion_Backend.Data.IServicies
 
         public Task<ApiLeague> GetLeagueByCountryName(string name);
 
-        //public Task<ApiLeague> GetRunningLeagues();
+        public Task<IEnumerable<ResponseLeague>> GetImportantLeaguesTest();
+
+
+        //testing
+        Task<LeagueRequestModel> GetLeagueByReqLeagueId(int leagueId);
     }
 }

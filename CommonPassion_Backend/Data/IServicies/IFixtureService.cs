@@ -14,7 +14,8 @@ namespace CommonPassion_Backend.Data.IServicies
         Task<ApiFixture> GetFixturesByTeam(int teamId, int season);
         Task<ApiFixture> GetH2HFixtures(int teamId1, int teamId2);
 
-        Task<ApiFixture> GetAllLiveImportantFixtures();
+        Task <IEnumerable<ApiFixture>> GetAllLiveImportantFixtures();
+        Task<ApiFixture> GetNextClubFixtures(int nbFixtures, int teamId);
 
         Task<ApiFixture> GetFixtureStats(string fixtureId);
 

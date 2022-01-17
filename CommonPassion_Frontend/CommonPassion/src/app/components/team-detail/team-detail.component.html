@@ -21,32 +21,71 @@
                   View Team Players
 
                 </button>
+
+                <div class="club-info">
+                  <div class="club-form">
+                      <p class="last-games">Last 5 games: {{teamDetails?.response?.form.slice(teamDetails?.response?.form.length-5)}} </p>
+                  </div>
+              
+              <div class="club-statistics">
+                  <div class="club-games">
+                      <p class="club-victories">Victories: {{teamDetails?.response?.fixtures.wins.total}} </p>
+                      <p class="club-draws">Draws: {{teamDetails?.response?.fixtures.draws.total}} </p>
+                      <p class="club-losses">Losses: {{teamDetails?.response?.fixtures.loses.total}}</p>
+                  </div>
+                  
+              </div>
+              <div class="club-goals">
+                  <p class="club-goals-for">Goals scored: {{teamDetails?.response?.goals.for.total.total}} </p>
+                  <p class="club-goals-agaisnt">Goals conceded: {{teamDetails?.response?.goals.against.total.total}} </p>
+                  <p class="club-clean-sheets">Clean-sheets: {{teamDetails?.response?.clean_sheet.total}}  </p>
+              </div>
+  
+             
+            </div>
           </div>
         </div>
 
 
           <div class="col-sm">
-            <div class="club-info">
-                <div class="club-form">
-                    <p class="last-games">Last 5 games: {{teamDetails?.response?.form.slice(teamDetails?.response?.form.length-5)}} </p>
-                </div>
-            
-            <div class="club-statistics">
-                <div class="club-games">
-                    <p class="club-victories">Victories: {{teamDetails?.response?.fixtures.wins.total}} </p>
-                    <p class="club-draws">Draws: {{teamDetails?.response?.fixtures.draws.total}} </p>
-                    <p class="club-losses">Losses: {{teamDetails?.response?.fixtures.loses.total}}</p>
-                </div>
-                
-            </div>
-            <div class="club-goals">
-                <p class="club-goals-for">Goals scored: {{teamDetails?.response?.goals.for.total.total}} </p>
-                <p class="club-goals-agaisnt">Goals conceded: {{teamDetails?.response?.goals.against.total.total}} </p>
-                <p class="club-clean-sheets">Clean-sheets: {{teamDetails?.response?.clean_sheet.total}}  </p>
-            </div>
 
+            <ng-container *ngFor = "let fixtures of nextFixtures?.response ">
+              <table class="fixture-table">
+                <thead >
+  
+                  <th></th>
+                <th>Home team</th>
+                <th>{{fixtures.league.name}}</th>
+                <th>Away Team</th>
+                <th></th>
+  
+                </thead>
+  
+                <tbody>
+                  <td>
+                    <img
+                      class="home-team-img"
+                      src="{{fixtures?.teams?.home?.logo}}"
+                      alt="background-image"
+                    />
+                  </td>
+                  <td>{{fixtures.teams.home.name}}</td>
+                  <td>{{fixtures.fixture.date}}</td>
+                  <td>{{fixtures.teams.away.name}}</td>
+                  <td>
+                    <img
+                      class="away-team-img"
+                      src="{{fixtures.teams.away.logo}}"
+                      alt="background-image"
+                    />
+                  </td>
+                </tbody>
+              </table>
            
-          </div>
+
+            </ng-container>
+
+          
           </div>
 
 

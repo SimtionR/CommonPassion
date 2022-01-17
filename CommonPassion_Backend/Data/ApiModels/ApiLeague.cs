@@ -3,7 +3,7 @@
     public class ApiLeague
     {
         public ResponseLeague[] response { get; set; }
-        public ParametersLeague parameters { get; set; }
+        public ParametersLeague? parameters { get; set; }
         public Paging paging { get; set; }
     }
 

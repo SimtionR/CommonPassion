@@ -6,14 +6,12 @@ C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\bin\Debug\net5.0\CommonPass
 C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\bin\Debug\net5.0\CommonPassion_Backend.dll
 C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\bin\Debug\net5.0\ref\CommonPassion_Backend.dll
 C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\bin\Debug\net5.0\CommonPassion_Backend.pdb
-C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\obj\Debug\net5.0\CommonPassion_Backend.csprojAssemblyReference.cache
 C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\obj\Debug\net5.0\CommonPassion_Backend.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\obj\Debug\net5.0\CommonPassion_Backend.AssemblyInfoInputs.cache
 C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\obj\Debug\net5.0\CommonPassion_Backend.AssemblyInfo.cs
 C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\obj\Debug\net5.0\CommonPassion_Backend.csproj.CoreCompileInputs.cache
 C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\obj\Debug\net5.0\CommonPassion_Backend.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\obj\Debug\net5.0\staticwebassets\CommonPassion_Backend.StaticWebAssets.Manifest.cache
-C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\obj\Debug\net5.0\staticwebassets\CommonPassion_Backend.StaticWebAssets.xml
 C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\obj\Debug\net5.0\scopedcss\bundle\CommonPassion_Backend.styles.css
 C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\obj\Debug\net5.0\CommonPassion_Backend.RazorTargetAssemblyInfo.cache
 C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\obj\Debug\net5.0\CommonPassion_Backend.dll
@@ -64,3 +62,5 @@ C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\bin\Debug\net5.0\Swashbuckl
 C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\obj\Debug\net5.0\CommonPassion_Backend.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\obj\Debug\net5.0\CommonPassion_Backend.csprojAssemblyReference.cache
+C:\Users\simti\Desktop\Licenta\CommonPassion_Backend\obj\Debug\net5.0\staticwebassets\CommonPassion_Backend.StaticWebAssets.xml

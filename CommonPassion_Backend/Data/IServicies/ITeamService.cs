@@ -11,6 +11,7 @@ namespace CommonPassion_Backend.Data.IServicies
     public interface ITeamService
     {
         public Task<ApiTeam> GetTeamInfo(int teamId);
+        public Task<ApiTeam> GetTeamInfo2(int teamid);
         public Task<ApiTeamSeason> GetTeamStats(int leagueId, int season, int teamId);
         public Task<ApiAvaialbleSeasons> GetTeamSeasons(int teamId);
         public Task<ApiTeam> GetTeamsFromLeague(int leagueId, int season);

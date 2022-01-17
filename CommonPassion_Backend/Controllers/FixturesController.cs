@@ -22,7 +22,7 @@ namespace CommonPassion_Backend.Controllers
         }
 
         [HttpGet]
-        [Route("today/LeagueId/{leagueId}")]
+        [Route("today/leagueId/{leagueId}")]
         public async Task<ActionResult<ApiFixture>> GetTodayFixturesByLeague( int leagueId)
         {
             var fixtures = await this._fixtureService.GetTodayFixturesFromLeague(leagueId, CURRENT_DATE, Constants.CURRENT_SEASON);
@@ -53,12 +53,15 @@ namespace CommonPassion_Backend.Controllers
 
         [HttpGet]
         [Route("home")]
-        public async Task<ActionResult<ApiFixture>> GetAllLiveImportantFixtures()
+        public async Task<IEnumerable<ApiFixture>> GetAllLiveImportantFixtures()
         {
             var fixtures = await this._fixtureService.GetAllLiveImportantFixtures();
-            return checkedFixtures(fixtures);
-        }
+            if (fixtures != null)
+                return fixtures;
 
+            else return (IEnumerable<ApiFixture>)NotFound();
+        }
+        
         [HttpGet]
         [Route("h2h/{teamId1}/{teamId2}")]
         public async Task<ActionResult<ApiFixture>> GetH2HFixtures(int teamId1, int teamId2)
@@ -75,11 +78,20 @@ namespace CommonPassion_Backend.Controllers
             return checkedFixtures(fixtures);
         }
 
+        [HttpGet]
+        [Route("next/{nbFixtures}/teamId/{teamId}")]
+        public async Task<ActionResult<ApiFixture>> GetNextClubFixtures(int nbFixtures, int teamId)
+        {
+            var fixtures = await this._fixtureService.GetNextClubFixtures(nbFixtures, teamId);
+            return checkedFixtures(fixtures);
+        }
 
 
 
 
-        private ActionResult<ApiFixture> checkedFixtures(ApiFixture fixtures)
+
+
+        private ActionResult<T> checkedFixtures<T>(T fixtures)
         {
             if (fixtures != null)
                 return fixtures;
@@ -97,7 +109,7 @@ namespace CommonPassion_Backend.Controllers
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/fixtures?live=39-61-140"),
+                RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/fixtures?live=39-140-135-78-61-238"),
                 Headers =
     {
         { "x-rapidapi-host", "api-football-v1.p.rapidapi.com" },

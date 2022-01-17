@@ -1,4 +1,6 @@
-﻿namespace CommonPassion_Backend.Data.ApiModels
+﻿using System;
+
+namespace CommonPassion_Backend.Data.ApiModels
 {
     public class ApiFixture
     {

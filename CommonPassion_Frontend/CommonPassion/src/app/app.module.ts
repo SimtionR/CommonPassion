@@ -27,6 +27,7 @@ import { StandingComponent } from './components/standing/standing.component';
 import { PlayerComponent } from './components/player/player.component';
 import { PlayerDetailComponent } from './components/player-detail/player-detail.component';
 import { PlayerStandingComponent } from './components/player-standing/player-standing.component';
+import { FixtureComponent } from './components/fixture/fixture.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { PlayerStandingComponent } from './components/player-standing/player-sta
     PlayerComponent,
     PlayerDetailComponent,
     PlayerStandingComponent,
+    FixtureComponent,
    
    
   ],

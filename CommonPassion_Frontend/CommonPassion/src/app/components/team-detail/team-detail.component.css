@@ -53,3 +53,34 @@
     color:#fff;
     font-weight: 700;
 }
+
+
+
+.home-team-img, .away-team-img
+{
+    height : 25px;
+}
+
+.fixture-table thead tr{
+    background-color: #009879;
+    color:#fff;
+    text-align: center;
+    font-weight: bold;
+}
+
+.fixture-table{
+    color : #fff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 8px;
+}
+
+.fixture-table thead{
+    color: #009879;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.fixutre-table tbody{
+    text-algin: center;
+}

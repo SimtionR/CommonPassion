@@ -16,23 +16,34 @@ namespace CommonPassion_Backend.Controllers
     public class TeamController : ApiController
     {
         private readonly ITeamService _teamService;
-        private readonly ILeagueService _leagueService;
 
-        public TeamController(ITeamService teamService, ILeagueService leagueService)
+        private ApiTeam responseTeam;
+
+        public TeamController(ITeamService teamService)
         {
             _teamService = teamService;
-            _leagueService = leagueService;
+          
+           
         }
 
         //gets team info based on id
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<ActionResult<ApiTeam>> TeamById(int id)
-        {
-            var team = await _teamService.GetTeamInfo(id);
 
-            return returnTeam<ApiTeam>(team);
+        //Used to be <ApiTeam> 
+        public async Task<ActionResult<ResponseTeam>> TeamById(int id)
+        {
+            /*var team = await _teamService.GetTeamInfo(id);
+
+            return returnTeam<ApiTeam>(team);*/
+
+            var teams = await this._teamService.GetTeamInfo2(id);
+
+            var team = teams.response.Where(t => t.team.id == id).FirstOrDefault();
+
+            return team;
+
 
         }
 
@@ -64,6 +75,9 @@ namespace CommonPassion_Backend.Controllers
             var teams = await this._teamService.GetTeamsFromLeague(leagueId, season);
             return returnTeam<ApiTeam>(teams);
         }
+
+
+
 
 
 
