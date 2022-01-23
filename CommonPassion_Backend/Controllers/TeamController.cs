@@ -13,6 +13,7 @@ using System.Threading.Tasks;using static CommonPassion_Backend.Data.ApiModels.A
 
 namespace CommonPassion_Backend.Controllers
 {
+    [Cache(3600)]
     public class TeamController : ApiController
     {
         private readonly ITeamService _teamService;

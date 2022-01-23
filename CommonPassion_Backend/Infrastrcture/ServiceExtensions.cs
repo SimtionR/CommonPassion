@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.Caching.StackExchangeRedis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,6 +88,23 @@ namespace CommonPassion_Backend.Infrastrcture
                 c.CustomSchemaIds(type => type.ToString());
             });
 
+            return services;
+        }
+
+       public static IServiceCollection AddCache(this IServiceCollection services, IConfiguration configuration)
+        {
+            var redisCacheSettings = new RedisCacheSettings();
+            configuration.GetSection(nameof(RedisCacheSettings)).Bind(redisCacheSettings);
+            services.AddSingleton(redisCacheSettings);
+
+            if(!redisCacheSettings.Enabled)
+            {
+                return services; 
+            }
+
+            services.AddStackExchangeRedisCache(options => options.Configuration = redisCacheSettings.ConnectionString);
+            services.AddSingleton<IResponseCacheService, ResponseCacheService>();
+           
             return services;
         }
 

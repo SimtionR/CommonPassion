@@ -13,14 +13,19 @@
             
                 <div class="club-info">
                     <div class="details-wrapper">
-                            <h1 class="club-name">Team: {{teamDetails?.response?.team.name}}</h1>
+                            <h1 class="club-name"> {{teamDetails?.response?.team.name}}</h1>
                         
                     </div>
                 </div>
                 <button type="button" class="btn btn-info" (click)="viewTeam(teamDetails.response.team.id)">
-                  View team players
+                   Team players
                 </button>
-
+                
+                <br/>
+                <button type="button" class="btn btn-info">
+                  Last results
+                </button>
+               
                 
 
                 <div class="club-info">

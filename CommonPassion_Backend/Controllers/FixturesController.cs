@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace CommonPassion_Backend.Controllers
 {
+    [Cache(3600)]
     public class FixturesController : ApiController
     {
         private readonly IFixtureService _fixtureService;

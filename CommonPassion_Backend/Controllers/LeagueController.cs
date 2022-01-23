@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 
 namespace CommonPassion_Backend.Controllers
 {
+    [Cache(3600)]
     public class LeagueController : ApiController
     {
         //private readonly IHttpClientFactory _clientFactory;
@@ -41,6 +42,7 @@ namespace CommonPassion_Backend.Controllers
         //gets league by league ID 
         [HttpGet]
         [Route("{id}/{current?}")]
+        
 
         public async Task<ActionResult<ApiLeague>> GetLeagueById(int id, string current="false")
         {

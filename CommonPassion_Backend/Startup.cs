@@ -30,7 +30,8 @@
                     .AddIdentity()
                     .AddJwtAuthentication(appSettings)
                     .AddAplicationServices()
-                    .AddSwagger();
+                    .AddSwagger()
+                    .AddCache(this.Configuration);
 
 
         }

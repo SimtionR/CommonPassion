@@ -11,12 +11,12 @@
 {
     height:200px;
     justify-content: center;
-    margin-left:40px;
+    
 
 }
 
 .details{
-    margin-top:100px;
+    margin-top: 20px;
 }
 
 
@@ -31,7 +31,7 @@
         text-overflow: ellipsis;
         overflow: hidden;
         justify-content: center;
-        margin-left:40px;
+        
     
 }
 

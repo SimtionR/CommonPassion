@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace CommonPassion_Backend.Controllers
 {
+    [Cache(3600)]
     public class CoachController : ApiController
     {
         private readonly ICoachService _coachService;

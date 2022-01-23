@@ -27,8 +27,6 @@ namespace CommonPassion_Backend.Controllers
             var standing = await this._standingSerivce.GetStandingByTeam(teamId, season);
             return returnStanding(standing);
 
-            /*var testStanding = standing.response[0].league.standings.Where(s => s.Rank == 1).FirstOrDefault();
-            return testStanding;*/
         }
 
         [HttpGet]
