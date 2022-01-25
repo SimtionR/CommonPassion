@@ -1,4 +1,4 @@
-﻿namespace CommonPassion_Backend
+﻿namespace CommonPassion_Backend.Settings
 {
     public class AppSettings
     {

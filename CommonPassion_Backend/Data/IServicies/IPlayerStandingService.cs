@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CommonPassion_Backend.Data.IServicies
 {
-    public interface IPlayerStanding
+    public interface IPlayerStandingService
     {
         public Task<ApiPlayerStanding> GetTopScorersFromLeague(int leagueId, int season);
         public Task<ApiPlayerStanding> GetTopAssistsFromleague(int leagueId, int season);

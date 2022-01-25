@@ -9,12 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Microsoft.Extensions.Caching.StackExchangeRedis;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using CommonPassion_Backend.Settings;
 
 namespace CommonPassion_Backend.Infrastrcture
 {
@@ -30,7 +26,7 @@ namespace CommonPassion_Backend.Infrastrcture
                 AddTransient<IPlayerService, PlayerService>().
                 AddTransient<IIdentityService, IdentityService>().
                 AddTransient<IStandingSerivce, StandingService>().
-                AddTransient<IPlayerStanding, PlayerStanding>().
+                AddTransient<IPlayerStandingService, PlayerStandingService>().
                 AddTransient<IFixtureService, FixtureService>().
                 AddTransient<ICoachService, CoachService>();
                 

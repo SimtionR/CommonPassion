@@ -21,6 +21,7 @@
         {
 
             var appSettings = this.Configuration.GetAppSetings(services);
+            var apiSettings = this.Configuration.GetApiConfigSettings(services);
 
             services.AddHttpClient();
             services.AddAuthorization();

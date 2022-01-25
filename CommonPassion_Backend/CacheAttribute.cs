@@ -1,4 +1,5 @@
 ﻿using CommonPassion_Backend.Data.IServicies;
+using CommonPassion_Backend.Settings;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -54,7 +55,7 @@ namespace CommonPassion_Backend
                 };
 
                 context.Result = contentResult;
-                return;
+                return ;
             }
 
             // we go and take the response from the actual request bc it is not cached

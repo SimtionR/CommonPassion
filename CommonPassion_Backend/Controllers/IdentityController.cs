@@ -4,6 +4,7 @@
     using CommonPassion_Backend.Data.Models.Identity;
     using CommonPassion_Backend.Entities;
     using CommonPassion_Backend.Models;
+    using CommonPassion_Backend.Settings;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
@@ -17,7 +18,7 @@
         public IdentityController(UserManager<User> userManager, IOptions<AppSettings> appSettings, IIdentityService identityService)
         {
             this._userMananger = userManager;
-            _identityService = identityService;
+            this._identityService = identityService;
             this._appSettings = appSettings.Value;
         }
 
@@ -59,21 +60,7 @@
             }
 
             var encryptedToken= this._identityService.GenerateJwtToken(user.Id, user.UserName, this._appSettings.Secret);
-            /*
-                        var tokenHandler = new JwtSecurityTokenHandler();
-                        var key = Encoding.ASCII.GetBytes(this._appSettings.Secret);
-
-                        var tokenDescriptor = new SecurityTokenDescriptor
-                        {
-                            Subject = new ClaimsIdentity(new Claim[]
-                            {
-                                new Claim(ClaimTypes.Name, user.Id.ToString())
-                            }),
-                            Expires = DateTime.UtcNow.AddDays(7),
-                            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-                        };
-                        var token = tokenHandler.CreateToken(tokenDescriptor);
-                        var encryptedToken = tokenHandler.WriteToken(token);*/
+      
 
             return new LoginResponseModel
             {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CommonPassion_Backend
+namespace CommonPassion_Backend.Settings
 {
     public class RedisCacheSettings
     {

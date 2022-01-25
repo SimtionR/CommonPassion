@@ -19,7 +19,6 @@ namespace CommonPassion_Backend.Data.IServicies
         public Task<IEnumerable<ResponseLeague>> GetImportantLeaguesTest();
 
 
-        //testing
-        Task<LeagueRequestModel> GetLeagueByReqLeagueId(int leagueId);
+
     }
 }

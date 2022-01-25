@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace CommonPassion_Backend.Controllers
 {
+    [Cache(3600)]
     public class StandingController : ApiController
     {
 
@@ -47,29 +48,6 @@ namespace CommonPassion_Backend.Controllers
                 return NotFound();
         }
 
-        [HttpGet]
-        [Route("test")]
-        public async Task<ActionResult<string>> Test()
-        {
-            var client = new HttpClient();
-            var request = new HttpRequestMessage
-            {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/standings?season=2021&league=140&team=529"),
-                Headers =
-    {
-        { "x-rapidapi-host", "api-football-v1.p.rapidapi.com" },
-        { "x-rapidapi-key", "***REMOVED***" },
-    },
-            };
-            using (var response = await client.SendAsync(request))
-            {
-                response.EnsureSuccessStatusCode();
-                var body = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(body);
-
-                return body;
-            }
-        }
+       
     }
 }

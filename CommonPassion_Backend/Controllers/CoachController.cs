@@ -47,29 +47,6 @@ namespace CommonPassion_Backend.Controllers
         }
 
 
-        [HttpGet]
-        [Route("test")]
-        public async  Task<string> Test()
-        {
-            var client = new HttpClient();
-            var request = new HttpRequestMessage
-            {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/coachs?team=33"),
-                Headers =
-    {
-        { "x-rapidapi-host", "api-football-v1.p.rapidapi.com" },
-        { "x-rapidapi-key", "***REMOVED***" },
-    },
-            };
-            using (var response = await client.SendAsync(request))
-            {
-                response.EnsureSuccessStatusCode();
-                var body = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(body);
-
-                return body;
-            }
-        }
+    
     }
 }

@@ -1,6 +1,8 @@
 ﻿using CommonPassion_Backend.Data.ApiModels;
 using CommonPassion_Backend.Data.IServicies;
 using CommonPassion_Backend.Infrastrcture;
+using CommonPassion_Backend.Settings;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,21 +12,23 @@ using System.Threading.Tasks;
 
 namespace CommonPassion_Backend.Data.Servicies
 {
-    public class PlayerStanding : IPlayerStanding
+    public class PlayerStandingService : IPlayerStandingService
     {
         private readonly HttpClient _httpClient;
+        private readonly IOptions<ApiConfigSettings> _apiSettings;
         private HttpRequestMessage _requestMessage;
 
-        public PlayerStanding(HttpClient httpClient)
+        public PlayerStandingService(HttpClient httpClient, IOptions<ApiConfigSettings> apiSettings)
         {
             _httpClient = httpClient;
+            _apiSettings = apiSettings;
             _requestMessage = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
                 Headers =
     {
-                 { "x-rapidapi-host", "api-football-v1.p.rapidapi.com" },
-                 { "x-rapidapi-key", "***REMOVED***" },
+                 { "x-rapidapi-host", apiSettings.Value.ApiHost},
+                 { "x-rapidapi-key", apiSettings.Value.ApiKey },
     },
             };
         }

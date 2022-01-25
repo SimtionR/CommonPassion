@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using CommonPassion_Backend.Settings;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,15 @@ namespace CommonPassion_Backend.Infrastrcture
 
             return appSettings;
 
+        }
+
+        public static ApiConfigSettings GetApiConfigSettings(this IConfiguration configuration, IServiceCollection services)
+        {
+            var apiConfigSettings = configuration.GetSection("ApiSettings");
+            services.Configure<ApiConfigSettings>(apiConfigSettings);
+            var apiSettings = apiConfigSettings.Get<ApiConfigSettings>();
+
+            return apiSettings;
         }
     }
 

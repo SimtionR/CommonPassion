@@ -2,6 +2,9 @@
 using CommonPassion_Backend.Data.IServicies;
 using CommonPassion_Backend.Data.Models.Request;
 using CommonPassion_Backend.Infrastrcture;
+using CommonPassion_Backend.Settings;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,20 +17,21 @@ namespace CommonPassion_Backend.Data.Servicies
     public class LeagueService : ILeagueService
     {
         private readonly HttpClient _httpClient;
+        private readonly IOptions<ApiConfigSettings> _apiSettings;
         private readonly HttpRequestMessage _requestMessage;
 
-        public LeagueService(HttpClient httpClient)
+        public LeagueService(HttpClient httpClient, IOptions<ApiConfigSettings> apiSettings)
         {
             _httpClient = httpClient;
-
-            _requestMessage= new HttpRequestMessage
+            _apiSettings = apiSettings;
+            _requestMessage = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
                 
                 Headers =
                         {
-                            { "x-rapidapi-host", "api-football-v1.p.rapidapi.com" },
-                            { "x-rapidapi-key", "***REMOVED***" },
+                            { "x-rapidapi-host", apiSettings.Value.ApiHost },
+                            { "x-rapidapi-key", apiSettings.Value.ApiKey },
                         }
             };
         }
@@ -44,13 +48,13 @@ namespace CommonPassion_Backend.Data.Servicies
             
         }
 
-        public async Task<ApiLeague> GetLeagueaById(int id,string current)
+        public async Task<ApiLeague> GetLeagueaById(int id, string current)
         {
-            ChangeRequestMessageLeagueId(id,current);
+            ChangeRequestMessageLeagueId(id, current);
             return await returnLeague(_requestMessage);
         }
 
-       
+
         public async Task<ApiLeague> GetLeagueByCountry(string country, string current)
         {
             ChangeRequestMessageCountryCode(country, current);
@@ -144,12 +148,7 @@ namespace CommonPassion_Backend.Data.Servicies
 
             return newReq;
 
-            /*var reqMessage2 = new HttpRequestMessage();
-            reqMessage2 = this._requestMessage;
-
-           reqMessage2.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/leagues?id={id}&current={current}");
-
-            return reqMessage2;*/
+          
 
         }
 
@@ -182,19 +181,6 @@ namespace CommonPassion_Backend.Data.Servicies
             }
         }
 
-        //testing 
-        public async Task<LeagueRequestModel> GetLeagueByReqLeagueId(int leagueId)
-        {
-            this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/leagues?id={leagueId}&current=true");
-
-            using (var response = await _httpClient.SendAsync(this._requestMessage))
-            {
-                response.EnsureSuccessStatusCode();
-                var league = await response.Content.ReadFromJsonAsync<LeagueRequestModel>();
-
-                return league;
-            }
-
-        }
+        
     }
 }

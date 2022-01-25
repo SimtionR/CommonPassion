@@ -1,5 +1,8 @@
 ﻿using CommonPassion_Backend.Data.ApiModels;
 using CommonPassion_Backend.Data.IServicies;
+using CommonPassion_Backend.Settings;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,20 +16,21 @@ namespace CommonPassion_Backend.Data.Servicies
     public class CoachService : ICoachService
     {
         private readonly HttpClient _httpClient;
+        private readonly IOptions<ApiConfigSettings> apiSettings;
         private readonly HttpRequestMessage _requestMessage;
 
-        public CoachService(HttpClient httpClient)
+        public CoachService(HttpClient httpClient, IOptions<ApiConfigSettings> apiSettings )
         {
             _httpClient = httpClient;
-
+            this.apiSettings = apiSettings;
             _requestMessage =new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
                
                 Headers =
     {
-                    { "x-rapidapi-host", "api-football-v1.p.rapidapi.com" },
-                    { "x-rapidapi-key", "***REMOVED***" },
+                    { "x-rapidapi-host", apiSettings.Value.ApiHost },
+                    { "x-rapidapi-key",  apiSettings.Value.ApiKey },
     },
             };
         }
