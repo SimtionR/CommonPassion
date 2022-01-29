@@ -13,10 +13,10 @@ export class StandingComponent implements OnInit {
 
 
   standingLeague$: Observable<ApiStanding>;
-  standingTeam: ApiStanding;
+ 
   teamId: any;
   leagueId:any;
-  standingLeague: ApiStanding;
+  standingLeague: any;
   test="#00ff00";
   constructor(private standingService: StandingsService,private activatedRoute: ActivatedRoute) { }
 
@@ -24,15 +24,17 @@ export class StandingComponent implements OnInit {
 
     this.teamId= this.activatedRoute.snapshot.paramMap.get('id');
     this.leagueId= this.activatedRoute.snapshot.paramMap.get('id2');
+    if(this.leagueId==null)
+    {
+      this.leagueId=this.teamId;
+      
+    }
 
-    this.standingService.getStandingByTeam(this.teamId).subscribe(s =>{
-      this.standingTeam=s;
-      console.log(this.standingTeam);
-    })
+    
     
     this.standingService.getStandingByLeague(this.leagueId).subscribe(s =>{
       this.standingLeague=s;
-      console.log(this.standingLeague);
+
     })
 
     

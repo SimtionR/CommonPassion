@@ -14,7 +14,7 @@ export class FixtureService {
   constructor(private http: HttpClient) { }
 
 
-  getNextClubFixtures( teamId: any, nbFixtures: any = 10, ) :Observable<any>
+  getNextClubFixtures( teamId: any, nbFixtures: any = 10   ) :Observable<any>
   {
     return this.http.get(this.fixturePath+ `next/${nbFixtures}/teamId/${teamId}`);
   }

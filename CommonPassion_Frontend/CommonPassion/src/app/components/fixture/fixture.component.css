@@ -8,6 +8,7 @@
     color:#fff;
     text-align: left;
     font-weight: bold;
+    
 }
 
 .fixture-table{
@@ -17,6 +18,9 @@
     font-size: 15px;
     border-bottom: 1px solid #dddddd;
     margin-bottom: 15px;
+    margin-top:30px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .fixture-table thead{
@@ -26,15 +30,17 @@
   
 }
 
-.hoemTh
+.awayGoalsTd, .homeGoalsTd
 {
-    color : #fff;
-    text-align: left;
-}
+   color:#fff;
+   font-size:30px;
+ 
+}    
 
-.awayTh
+
+.hoemTh, .awayTh
 {
     color : #fff;
-    text-align: right;
+    text-align: center;
 }
 

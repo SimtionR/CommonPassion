@@ -26,35 +26,64 @@
              
             </tr>
         </thead>
-    
-        <tbody >
-            <ng-container *ngFor= "let player of playerStanding?.response">
-                <tr class =" player-display" (click) ="displayPlayer(player?.player.id)">
-                    <td class="player-banner">
-                        <img 
-                             src="{{player?.player.photo}}"
-                             alt="background-image"
-                             class="player-image"
-                             >
-    
-                            
-                    </td>
-    
-                    <td >{{player.player.name}}</td>
-    
-                    <td *ngIf="sort == 'Goals'">{{player?.statistics[0]?.goals.total}}</td>
-                    <td *ngIf="sort == 'Assists'">{{player?.statistics[0]?.goals.assists}}</td>
-                    <td *ngIf="sort == 'Red Cards'">{{player?.statistics[0]?.cards.red}}</td>
-                    <td *ngIf="sort == 'Yellow Cards'">{{player?.statistics[0]?.cards.yellow}}</td>
-         
-                </tr>
-               
-               
-               
-                
-            </ng-container>
+
+      
+        <tbody>
+            <ng-container *ngIf="playerStanding?.Value?.response == null; then nonCachedResponse else cachedResponse"></ng-container>
+
+            <ng-template #nonCachedResponse>
+                <ng-container *ngFor= "let player of playerStanding?.response">
+                    <tr class =" player-display" (click) ="displayPlayer(player?.player.id)">
+                        <td class="player-banner">
+                            <img 
+                                 src="{{player?.player.photo}}"
+                                 alt="background-image"
+                                 class="player-image"
+                                 >
+        
+                                
+                        </td>
+        
+                        <td >{{player.player.name}}</td>
+        
+                        <td *ngIf="sort == 'Goals'">{{player?.statistics[0]?.goals.total}}</td>
+                        <td *ngIf="sort == 'Assists'">{{player?.statistics[0]?.goals.assists}}</td>
+                        <td *ngIf="sort == 'Red Cards'">{{player?.statistics[0]?.cards.red}}</td>
+                        <td *ngIf="sort == 'Yellow Cards'">{{player?.statistics[0]?.cards.yellow}}</td>
+             
+                    </tr>
+
+                </ng-container>
+            </ng-template>
+
             
-            
+            <ng-template #cachedResponse>
+                <ng-container *ngFor= "let player of playerStanding?.Value?.response">
+                    <tr class =" player-display" (click) ="displayPlayer(player?.player.id)">
+                        <td class="player-banner">
+                            <img 
+                                 src="{{player?.player.photo}}"
+                                 alt="background-image"
+                                 class="player-image"
+                                 >
+        
+                                
+                        </td>
+        
+                        <td >{{player.player.name}}</td>
+        
+                        <td *ngIf="sort == 'Goals'">{{player?.statistics[0]?.goals.total}}</td>
+                        <td *ngIf="sort == 'Assists'">{{player?.statistics[0]?.goals.assists}}</td>
+                        <td *ngIf="sort == 'Red Cards'">{{player?.statistics[0]?.cards.red}}</td>
+                        <td *ngIf="sort == 'Yellow Cards'">{{player?.statistics[0]?.cards.yellow}}</td>
+             
+                    </tr>
+
+                </ng-container>
+            </ng-template>
+               
+
         </tbody>
+
     </table>
 </div>

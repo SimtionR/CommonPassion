@@ -1,14 +1,16 @@
+<ng-container *ngIf="nextFixtures?.Value?.response==null; then nonCachedResponse else cachedResponse"></ng-container>
 
-<ng-container *ngFor = "let fixtures of nextFixtures?.response ">
+<ng-template #nonCachedResponse>
+  <ng-container *ngFor = "let fixtures of nextFixtures?.response ">
     <table class="fixture-table">
       <thead >
 
        
-      <th>{{fixtures.teams.home.name}}</th>
+      <th class="homeTh">{{fixtures.teams.home.name}}</th>
       <th></th>
-      <th>{{fixtures.league.name}}</th>
+      <th class="competitionTh" style="width: 200px;">{{fixtures.league.name}}</th>
       <th></th>
-      <th>{{fixtures.teams.away.name}}</th>
+      <th class="awayTh">{{fixtures.teams.away.name}}</th>
       
 
       </thead>
@@ -36,3 +38,51 @@
  
 
   </ng-container>
+
+</ng-template>
+
+
+<ng-template #cachedResponse>
+  <ng-container *ngFor = "let fixtures of nextFixtures?.Value?.response ">
+    <table class="fixture-table">
+      <thead >
+
+       
+      <th class="homeTh">{{fixtures.teams.home.name}}</th>
+      <th></th>
+      <th class="competitionTh" style="width:200px;">{{fixtures.league.name}}</th>
+      <th></th>
+      <th class="awayTh">{{fixtures.teams.away.name}}</th>
+      
+
+      </thead>
+
+      <tbody>
+        <td>
+          <img
+            class="home-team-img"
+            src="{{fixtures?.teams?.home?.logo}}"
+            alt="background-image"
+          />
+        </td>   
+        <td class="homeGoalsTd" *ngIf="sort =='last'">{{fixtures.goals.home}}</td>
+        <td></td>
+        <td *ngIf="sort =='next'">{{fixtures.fixture.date.substr(0,10)}} - {{fixtures.fixture.date.substr(11,5)}}</td>
+        <td *ngIf="sort=='next'"></td>
+        <td class="awayGoalsTd" *ngIf="sort == 'last'">{{fixtures.goals.away}}</td>
+       
+        <td>
+          <img
+            class="away-team-img"
+            src="{{fixtures.teams.away.logo}}"
+            alt="background-image"
+          />
+        </td>
+      </tbody>
+    </table>
+ 
+
+  </ng-container>
+
+</ng-template>
+

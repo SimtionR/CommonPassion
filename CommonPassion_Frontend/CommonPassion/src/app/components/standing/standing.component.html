@@ -10,35 +10,75 @@
         </tr>
     </thead>
 
-    <tbody >
-        <ng-container *ngFor= "let team of standingLeague.response[0]?.league!.standings[0]">
-            
-            <tr  *ngIf="team?.team?.id==teamId; then selectedTeam else normalTeam">
-               
-            </tr>
-            
-            <ng-template #selectedTeam>
-                <tr class="active-row">
-                <td>{{team?.rank}}</td>
-                <td>{{team?.team?.name}}</td>
-                <td class="matches-played">{{team?.all?.played}}</td>
-                <td class="points">{{team?.points}}</td>          
-                <td class="goal-diff">{{team?.goalsDiff}}</td>
-            </tr>   
-            </ng-template>
+    <tbody *ngIf="standingLeague?.Value?.response == null; then nonCachedResponse else cachedResponse"></tbody>
 
-            <ng-template #normalTeam>
-                <tr style="color: {{getColor(team?.description!)}}">
-                <td>{{team?.rank}}</td>
-                <td>{{team?.team?.name}}</td>
-                <td class="matches-played">{{team?.all?.played}}</td>
-                <td class="points">{{team?.points}}</td>          
-                <td class="goal-diff">{{team?.goalsDiff}}</td>
-            </tr>
-            </ng-template>
+    <ng-template #nonCachedResponse>
+        <tbody >
+            <ng-container *ngFor= "let team of standingLeague?.response[0]?.league?.standings[0]">
+                
+                <tr  *ngIf="team?.team?.id==teamId; then selectedTeam else normalTeam">
+                   
+                </tr>
+                
+                <ng-template #selectedTeam>
+                    <tr class="active-row">
+                    <td>{{team?.rank}}</td>
+                    <td>{{team?.team?.name}}</td>
+                    <td class="matches-played">{{team?.all?.played}}</td>
+                    <td class="points">{{team?.points}}</td>          
+                    <td class="goal-diff">{{team?.goalsDiff}}</td>
+                </tr>   
+                </ng-template>
+    
+                <ng-template #normalTeam>
+                    <tr style="color: {{getColor(team?.description!)}}">
+                    <td>{{team?.rank}}</td>
+                    <td>{{team?.team?.name}}</td>
+                    <td class="matches-played">{{team?.all?.played}}</td>
+                    <td class="points">{{team?.points}}</td>          
+                    <td class="goal-diff">{{team?.goalsDiff}}</td>
+                </tr>
+                </ng-template>
+                
+            </ng-container>
             
-        </ng-container>
-        
-        
-    </tbody>
+            
+        </tbody>
+    </ng-template>
+
+
+    <ng-template #cachedResponse>
+        <tbody >
+            <ng-container *ngFor= "let team of standingLeague?.Value?.response[0]?.league?.standings[0]">
+                
+                <tr  *ngIf="team?.team?.id==teamId; then selectedTeam else normalTeam">
+                   
+                </tr>
+                
+                <ng-template #selectedTeam>
+                    <tr class="active-row">
+                    <td>{{team?.rank}}</td>
+                    <td>{{team?.team?.name}}</td>
+                    <td class="matches-played">{{team?.all?.played}}</td>
+                    <td class="points">{{team?.points}}</td>          
+                    <td class="goal-diff">{{team?.goalsDiff}}</td>
+                </tr>   
+                </ng-template>
+    
+                <ng-template #normalTeam>
+                    <tr style="color: {{getColor(team?.description!)}}">
+                    <td>{{team?.rank}}</td>
+                    <td>{{team?.team?.name}}</td>
+                    <td class="matches-played">{{team?.all?.played}}</td>
+                    <td class="points">{{team?.points}}</td>          
+                    <td class="goal-diff">{{team?.goalsDiff}}</td>
+                </tr>
+                </ng-template>
+                
+            </ng-container>
+            
+            
+        </tbody>
+    </ng-template>
+    
 </table>

@@ -12,6 +12,7 @@ import {StandingComponent} from './components/standing/standing.component';
 import { PlayerComponent } from './components/player/player.component';
 import {PlayerDetailComponent} from './components/player-detail/player-detail.component';
 import { PlayerStandingComponent } from './components/player-standing/player-standing.component';
+import { FixtureComponent } from './components/fixture/fixture.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: 'standing/leagueId/:id', component: StandingComponent},
   {path: 'players/teamId/:id', component: PlayerComponent},
   {path: 'player/playerId/:id', component: PlayerDetailComponent},
-  {path: 'playerStanding/leagueId/:id', component: PlayerStandingComponent}
+  {path: 'playerStanding/leagueId/:id', component: PlayerStandingComponent},
+  {path: 'fixtures/clubId/:id', component:FixtureComponent}
 ];
 
 @NgModule({

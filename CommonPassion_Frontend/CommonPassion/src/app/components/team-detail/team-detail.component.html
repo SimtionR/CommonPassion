@@ -1,4 +1,7 @@
-    <div class="container-fluid">
+    <div *ngIf="teamDetails?.Value?.response == null; then nonCachedResponse else cachedResponse"></div>
+    
+    <ng-template #nonCachedResponse>
+      <div class="container-fluid">
         <div class="row">
           <div class="col-sm">
             <div class="details">
@@ -17,14 +20,15 @@
                         
                     </div>
                 </div>
-                <button type="button" class="btn btn-info" (click)="viewTeam(teamDetails.response.team.id)">
+                <button type="button" class="btn btn-info" style="width:200px;" (click)="viewTeam(teamDetails.response.team.id)">
                    Team players
                 </button>
                 
                 <br/>
-                <button type="button" class="btn btn-info">
+                <button type="button" class="btn btn-info " style="width:200px;" (click)="viewLastResults(teamDetails?.response.team.id)">
                   Last results
                 </button>
+                
                
                 
 
@@ -52,6 +56,78 @@
           </div>
         </div>
 
+          <div class="col-sm">
+
+
+            <app-fixture></app-fixture>
+
+
+          </div>
+
+          <div class="col-sm">
+            <app-standing></app-standing>
+          </div>
+        </div>
+
+      </div>
+    
+    </ng-template>
+   
+
+    <ng-template #cachedResponse>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm">
+            <div class="details">
+                <div class="club-banner">
+                  
+                    <img
+                        class="club-banner-img"
+                        src="{{teamDetails?.Value?.response?.team?.logo}}"
+                        alt="background-image"
+                    />
+                </div>
+            
+                <div class="club-info">
+                    <div class="details-wrapper">
+                            <h1 class="club-name"> {{teamDetails?.Value?.response?.team.name}}</h1>
+                        
+                    </div>
+                </div>
+                <button type="button" class="btn btn-info" style="width:200px;" (click)="viewTeam(teamDetails.Value?.response.team.id)">
+                   Team players
+                </button>
+                
+                <br/>
+                <button type="button" class="btn btn-info" style="width:200px;" (click)="viewLastResults(teamDetails?.Value?.response.team.id)">
+                  Last results
+                </button>
+               
+                
+
+                <div class="club-info">
+                  <div class="club-form">
+                      <p class="last-games">Last 5 games: {{teamDetails?.Value?.response?.form.slice(teamDetails?.response?.form.length-5)}} </p>
+                  </div>
+              
+              <div class="club-statistics">
+                  <div class="club-games">
+                      <p class="club-victories">Victories: {{teamDetails?.Value?.response?.fixtures.wins.total}} </p>
+                      <p class="club-draws">Draws: {{teamDetails?.Value?.response?.fixtures.draws.total}} </p>
+                      <p class="club-losses">Losses: {{teamDetails?.Value?.response?.fixtures.loses.total}}</p>
+                  </div>
+                  
+              </div>
+              <div class="club-goals">
+                  <p class="club-goals-for">Goals scored: {{teamDetails?.Value?.response?.goals.for.total.total}} </p>
+                  <p class="club-goals-agaisnt">Goals conceded: {{teamDetails?.Value?.response?.goals.against.total.total}} </p>
+                  <p class="club-clean-sheets">Clean-sheets: {{teamDetails?.Value?.response?.clean_sheet.total}}  </p>
+              </div>
+  
+             
+            </div>
+          </div>
+        </div>
 
           <div class="col-sm">
 
@@ -61,16 +137,13 @@
 
           </div>
 
-
           <div class="col-sm">
             <app-standing></app-standing>
           </div>
         </div>
 
       </div>
-
-     
-    
+    </ng-template>
 
 
 

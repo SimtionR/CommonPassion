@@ -1,19 +1,84 @@
+<div class="league-info">
+    <ng-container *ngIf="modelTeams?.Value?.response == null;then nonCachedResponseButton else cachedResponseButton"></ng-container> 
+    <ng-template #cachedResponseButton>
+        <button type="button" class="btn btn-info " style="width:200px;"(click)="viewStanding(modelTeams?.Value?.parameters.league)">
+            View Standing
+         </button>
+         
+        
+         <button type="button" class="btn btn-info "style="width:200px;"(click)="viewPlayerStats(modelTeams?.Value?.parameters.league)">
+            View Player Stats
+         </button>
+        
+         <button type="button" class="btn btn-info" style="width:200px;">
+            View next Fixtures
+         </button>
+    </ng-template>
+
+    <ng-template #nonCachedResponseButton>
+        <button type="button" class="btn btn-info " style="width:200px;"(click)="viewStanding(modelTeams?.parameters.league)">
+            View Standing
+         </button>
+         
+        
+         <button type="button" class="btn btn-info "style="width:200px;"(click)="viewPlayerStats(modelTeams?.parameters.league)">
+            View Player Stats
+         </button>
+        
+         <button type="button" class="btn btn-info" style="width:200px;">
+            View next Fixtures
+         </button>
+    </ng-template>
+    
+</div>
+
 <div class="boxes">
-    <ng-container *ngFor="let response of modelTeams?.response">
-    <div class="box" (click)="openTeamDetails2(response.team.id,leagueId)">
-        <div class="box-thumb-container">
-            <img
-            src="{{response.team.logo}}"
-            alt="thumbnail"
-            class="center"
-            />
-        </div>
-        <div class="box-name">
-            <p class="box-name">{{response.team.name}}</p>
-        </div>
-        <div class="box-country-name">
-            <p class="box-country-name">Founded in : {{response.team.founded}}</p>
-        </div>
-    </div>
-</ng-container>
+
+    <ng-container *ngIf="modelTeams?.Value?.response == null;then nonCachedResponse else cachedResponse"></ng-container> 
+        <ng-template #cachedResponse>
+            <ng-container *ngFor="let team of modelTeams?.Value.response">
+                <div class="box" (click)="openTeamDetails2(team.team.id,leagueId)">
+                    <div class="box-thumb-container">
+                        <img
+                        src="{{team.team.logo}}"
+                        alt="thumbnail"
+                        class="center"
+                        />
+                    </div>
+                    <div class="box-name">
+                        <p class="box-name">{{team.team.name}}</p>
+                    </div>
+                    <div class="box-country-name">
+                        <p class="box-country-name">Founded in : {{team.team.founded}}</p>
+                    </div>
+                </div>
+            </ng-container>
+             
+        </ng-template>
+
+        <ng-template #nonCachedResponse>
+
+            <ng-container *ngFor="let team of modelTeams?.response">
+                <div class="box" (click)="openTeamDetails2(team.team.id,leagueId)">
+                    <div class="box-thumb-container">
+                        <img
+                        src="{{team.team.logo}}"
+                        alt="thumbnail"
+                        class="center"
+                        />
+                    </div>
+                    <div class="box-name">
+                        <p class="box-name">{{team.team.name}}</p>
+                    </div>
+                    <div class="box-country-name">
+                        <p class="box-country-name">Founded in : {{team.team.founded}}</p>
+                    </div>
+                </div>
+            </ng-container>    
+
+        </ng-template>
+   
+
+
+    
 </div>

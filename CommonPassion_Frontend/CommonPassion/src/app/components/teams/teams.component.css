@@ -57,6 +57,22 @@
         cursor:pointer;
     }
 
+    
+    .league-info{
+      margin-left: 35%;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .btn-info
+    {
+        margin-right: 15px;
+        
+    }
+
+
+    
+
    
     .box:hover {
         box-shadow: 4px 3px 11px 6px rgb(200 152 44 / 46%);

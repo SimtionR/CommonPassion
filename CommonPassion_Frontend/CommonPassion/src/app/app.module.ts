@@ -28,6 +28,7 @@ import { PlayerComponent } from './components/player/player.component';
 import { PlayerDetailComponent } from './components/player-detail/player-detail.component';
 import { PlayerStandingComponent } from './components/player-standing/player-standing.component';
 import { FixtureComponent } from './components/fixture/fixture.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { FixtureComponent } from './components/fixture/fixture.component';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }
+    },
+    [DatePipe, FixtureComponent]
   ],
   bootstrap: [AppComponent]
 })

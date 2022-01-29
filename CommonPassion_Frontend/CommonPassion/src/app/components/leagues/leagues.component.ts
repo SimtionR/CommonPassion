@@ -12,7 +12,7 @@ import { LeaguesService } from '../../services/leagues.service';
 })
 export class LeaguesComponent implements OnInit {
 
-  leagueApi: RootLeague[];
+  leagueApi: any  ;
 
 
   constructor(private leagueService: LeaguesService, private router: Router) { }
@@ -30,25 +30,26 @@ export class LeaguesComponent implements OnInit {
   }
 
 
-  getLeagueById()
-  {
-    return this.leagueService.getLeagueById(39).subscribe(c => console.log(c))
+  // getLeagueById()
+  // {
+  //   return this.leagueService.getLeagueById(39).subscribe(c => console.log(c))
     
-  }
+  // }
 
-  getAllLeagues()
-  {
-    return this.leagueService.getLeagues().subscribe( c => console.log(c));
-  }
+  // getAllLeagues()
+  // {
+  //   return this.leagueService.getLeagues().subscribe( c => console.log(c));
+  // }
 
-  getImportantLeagues()
-  {
-    return this.leagueService.getImportantLeagues().subscribe(c=> console.log(c));
-  }
+  // getImportantLeagues()
+  // {
+  //   return this.leagueService.getImportantLeagues().subscribe(c=> console.log(c));
+  // }
 
   viewMore(id: any)
   {
      this.router.navigate(["team/leagueId/",id])
+     
   }
 
   

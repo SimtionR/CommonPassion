@@ -7,18 +7,20 @@
 }
 
 
-.player-info, .player-stats{
+.player-info, .player-stats, .goalkeeper-stats{
 
        
     color:#fff;
-    font-weight: 700;
-    font-size: 16px; 
-    margin-top: 20px;
+    font-weight: 400;
+    font-size: 28px; 
+    margin-top: 10%;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     justify-content: center;
     margin-left:40px;
+    border-bottom: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
 
 }
 
