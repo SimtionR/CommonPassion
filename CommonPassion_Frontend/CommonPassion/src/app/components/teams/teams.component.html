@@ -10,7 +10,7 @@
             View Player Stats
          </button>
         
-         <button type="button" class="btn btn-info" style="width:200px;">
+         <button type="button" class="btn btn-info" style="width:200px;"(click)= "viewFixtures(modelTeams?.Value?.parameters.league)">
             View next Fixtures
          </button>
     </ng-template>
@@ -25,7 +25,7 @@
             View Player Stats
          </button>
         
-         <button type="button" class="btn btn-info" style="width:200px;">
+         <button type="button" class="btn btn-info" style="width:200px;"(click)="viewFixtures(modelTeams?.parameters.league)">
             View next Fixtures
          </button>
     </ng-template>

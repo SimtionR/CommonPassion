@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FixtureService } from '../../services/fixture.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { ResultService } from '../../services/result.service';
+import { CompileShallowModuleMetadata } from '@angular/compiler';
 
 @Component({
   selector: 'app-fixture',
@@ -53,7 +54,7 @@ export class FixtureComponent implements OnInit {
 
     else if(sort =="last")
     {
-      this.fixtureService.GetFixtureByTeam(this.clubId).subscribe( f => {
+      this.fixtureService.GetLastClubFixtures(this.clubId).subscribe( f => {
         this.nextFixtures= f;
         console.log(this.nextFixtures);
       });
@@ -61,6 +62,11 @@ export class FixtureComponent implements OnInit {
 
     else if(sort= "league")
     {
+
+      this.fixtureService.GetLastClubFixtures(this.clubId).subscribe( f => {
+        this.nextFixtures = f;
+        console.log(this.nextFixtures);
+      })
 
     }
 

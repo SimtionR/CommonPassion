@@ -54,11 +54,10 @@ export class TeamsComponent implements OnInit {
     this.router.navigate(['playerStanding/leagueId/',leagueId]);
   }
 
-  viewLastResults(clubId:any)
+ 
+  viewFixtures(leagueId: any)
   {
-    this.fixtureComponent.sort = "last";
-    this.router.navigate(['fixtures/clubId/',clubId]);
-    
+    this.router.navigate(['leagueFixtures/leagueId/',leagueId]);
   }
 
 }

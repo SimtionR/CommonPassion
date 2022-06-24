@@ -18,7 +18,7 @@ namespace CommonPassion_Backend.Data.IServicies
         Task<ApiFixture> GetNextClubFixtures(int nbFixtures, int teamId);
 
         Task<ApiFixture> GetFixtureStats(string fixtureId);
-
-
+        Task<ApiFixture> GetLastClubFixtures(int nbFixtures, int teamId);
+        Task<ApiFixture> GetFixturesByLeague(int leagueId, int season);
     }
 }

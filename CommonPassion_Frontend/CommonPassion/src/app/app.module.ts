@@ -29,6 +29,7 @@ import { PlayerDetailComponent } from './components/player-detail/player-detail.
 import { PlayerStandingComponent } from './components/player-standing/player-standing.component';
 import { FixtureComponent } from './components/fixture/fixture.component';
 import { DatePipe } from '@angular/common';
+import { LeagueFixtureComponent } from './components/league-fixture/league-fixture.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { DatePipe } from '@angular/common';
     PlayerDetailComponent,
     PlayerStandingComponent,
     FixtureComponent,
+    LeagueFixtureComponent,
    
    
   ],

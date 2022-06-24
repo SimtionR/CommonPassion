@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
@@ -39,13 +40,19 @@ export class FixtureService {
     return this.http.get(this.fixturePath + `teamId/${teamId}/${season}`);
   }
 
-  GetFixtuerByLeagueRound(leagueId: any, round: any, season: any = environment.CURRENT_SEASON) : Observable<any>
+  GetFixtureByLeague(leagueId: any, season: any = environment.CURRENT_SEASON) : Observable<any>
   {
-    return this.http.get(this.fixturePath + `leagueId/${leagueId}/round/${round}/${season}`);
+    return this.http.get(this.fixturePath + `leagueId/${leagueId}`);
   }
+
 
   GetTodayFixturesByLeague(leagueId: any) : Observable<any>
   {
     return this.http.get(this.fixturePath + `today/leagueId/${leagueId}`);
+  }
+
+  GetLastClubFixtures(teamId: any, nbFixtures: any =20)
+  {
+    return this.http.get(this.fixturePath+ `last/${nbFixtures}/teamId/${teamId}`);
   }
 }

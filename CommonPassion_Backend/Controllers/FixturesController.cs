@@ -87,11 +87,21 @@ namespace CommonPassion_Backend.Controllers
             return checkedFixtures(fixtures);
         }
 
-        
+        [HttpGet]
+        [Route("last/{nbFixtures}/teamId/{teamId}")]
+        public async Task<ActionResult<ApiFixture>> GetLastClubFixtures(int nbFixtures, int teamId)
+        {
+            var fixtures = await this._fixtureService.GetLastClubFixtures(nbFixtures, teamId);
+            return checkedFixtures(fixtures);
+        }
 
-
-
-
+        [HttpGet]
+        [Route("leagueId/{leagueId}")]
+        public async Task<ActionResult<ApiFixture>> GetFixturesByLeague(int leagueId, int season = Constants.CURRENT_SEASON)
+        {
+            var fixtures = await this._fixtureService.GetFixturesByLeague(leagueId, season);
+            return checkedFixtures(fixtures);
+        }
 
 
         private ActionResult<T> checkedFixtures<T>(T fixtures)

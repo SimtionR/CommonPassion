@@ -40,6 +40,12 @@ namespace CommonPassion_Backend.Data.Servicies
             return await ReadFixture<IEnumerable<ApiFixture>>();
         }
 
+        public async Task<ApiFixture> GetFixturesByLeague(int leagueId, int season)
+        {
+            this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/fixtures?league=39&season=2021");
+            return await ReadFixture<ApiFixture>();
+        }
+
         public async Task<ApiFixture> GetFixturesByLeagueRound(int leagueId, int round, int season)
         {
             this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/fixtures?league={leagueId}&season={season}&round=Regular%20Season%20-%20{round}");
@@ -69,6 +75,12 @@ namespace CommonPassion_Backend.Data.Servicies
         public async Task<ApiFixture> GetH2HFixtures(int teamId1, int teamId2)
         {
             this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/fixtures/headtohead?h2h={teamId1}-{teamId2}");
+            return await ReadFixture<ApiFixture>();
+        }
+
+        public async Task<ApiFixture> GetLastClubFixtures(int nbFixtures, int teamId)
+        {
+            this._requestMessage.RequestUri = new Uri($"https://api-football-v1.p.rapidapi.com/v3/fixtures?team={teamId}&last={nbFixtures}");
             return await ReadFixture<ApiFixture>();
         }
 
