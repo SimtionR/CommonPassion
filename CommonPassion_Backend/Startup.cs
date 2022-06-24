@@ -8,7 +8,9 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using CommonPassion_Backend.Infrastrcture;
-
+    using MediatR;
+    using CommonPassion_Backend.Mediator.Queries.ReactionQueries;
+    using Azure.Storage.Blobs;
 
     public class Startup
     {
@@ -23,9 +25,14 @@
             var appSettings = this.Configuration.GetAppSetings(services);
             var apiSettings = this.Configuration.GetApiConfigSettings(services);
 
+            var azureConnectionString = this.Configuration.GetValue<string>("AzureBlobStorageConnectionString");
+            services.AddSingleton(x => new BlobServiceClient(azureConnectionString));
+
             services.AddHttpClient();
             services.AddAuthorization();
             services.AddControllers();
+            services.AddAutoMapper(typeof(Program));
+            services.AddMediatR(typeof(GetLikesQuery));
             services.AddDbContext<CommonPassionDbContext>(options => options
              .UseSqlServer(this.Configuration.GetDefaultConnectionString()))
                     .AddIdentity()

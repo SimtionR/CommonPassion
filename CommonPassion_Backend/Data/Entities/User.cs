@@ -1,12 +1,14 @@
-﻿namespace CommonPassion_Backend.Entities
-{
-    using Microsoft.AspNetCore.Identity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Text.Json.Serialization;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-    [Table("AspNetUsers")]
+namespace CommonPassion_Backend.Data.Entities
+{
     public class User : IdentityUser
     {
-       
+        public Profile Profile { get; set; }
     }
 }

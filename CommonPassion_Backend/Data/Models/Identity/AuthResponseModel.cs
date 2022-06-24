@@ -1,6 +1,6 @@
 ﻿namespace CommonPassion_Backend.Models
 {
-    using CommonPassion_Backend.Entities;
+    using CommonPassion_Backend.Data.Entities;
     public class AuthResponseModel
     {
         public string Id { get; set; }

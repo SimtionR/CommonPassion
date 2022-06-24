@@ -1,5 +1,5 @@
 ﻿using CommonPassion_Backend.Data.IServicies;
-using CommonPassion_Backend.Entities;
+using CommonPassion_Backend.Data.Entities;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;

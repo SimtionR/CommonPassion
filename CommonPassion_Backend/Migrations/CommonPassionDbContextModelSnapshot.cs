@@ -19,7 +19,185 @@ namespace CommonPassion_Backend.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.12");
 
-            modelBuilder.Entity("CommonPassion_Backend.Entities.User", b =>
+            modelBuilder.Entity("CommonPassion_Backend.Data.Entities.Connection", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("ProfileConnectionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProfilePicture")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProfileUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProfileId");
+
+                    b.ToTable("Connections");
+                });
+
+            modelBuilder.Entity("CommonPassion_Backend.Data.Entities.ConnectionPending", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<bool>("IsAccepted")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ProfileId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReceiverId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SenderName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenderPhoto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProfileId");
+
+                    b.ToTable("ConnectionPendings");
+                });
+
+            modelBuilder.Entity("CommonPassion_Backend.Data.Entities.LeagueDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("LeagueId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LeagueDetails");
+                });
+
+            modelBuilder.Entity("CommonPassion_Backend.Data.Entities.Profile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("ProfilePicture")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
+
+                    b.ToTable("Profiles");
+                });
+
+            modelBuilder.Entity("CommonPassion_Backend.Data.Entities.Reactions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<bool>("IsDisliked")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsLiked")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReviewId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UserReviewId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UserReviewId1")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProfileId");
+
+                    b.HasIndex("UserReviewId");
+
+                    b.HasIndex("UserReviewId1");
+
+                    b.ToTable("Reactions");
+                });
+
+            modelBuilder.Entity("CommonPassion_Backend.Data.Entities.ResponsePending", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<bool>("IsAccepted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("PendingId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProfileId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReceiverId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ReceiverName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReceiverPhoto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SenderName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SenderPhoto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProfileId");
+
+                    b.ToTable("ResponsePendings");
+                });
+
+            modelBuilder.Entity("CommonPassion_Backend.Data.Entities.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -82,6 +260,49 @@ namespace CommonPassion_Backend.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("CommonPassion_Backend.Data.Entities.UserReview", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("CommentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("LeagueReviewdId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumberOfDislikes")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NumberOfLikes")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProfileId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Rating")
+                        .HasColumnType("float");
+
+                    b.Property<string>("RewiewContent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LeagueReviewdId");
+
+                    b.HasIndex("ProfileId");
+
+                    b.ToTable("UserReviews");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -215,6 +436,74 @@ namespace CommonPassion_Backend.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("CommonPassion_Backend.Data.Entities.Connection", b =>
+                {
+                    b.HasOne("CommonPassion_Backend.Data.Entities.Profile", null)
+                        .WithMany("Connections")
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CommonPassion_Backend.Data.Entities.ConnectionPending", b =>
+                {
+                    b.HasOne("CommonPassion_Backend.Data.Entities.Profile", null)
+                        .WithMany("ConnectionPendings")
+                        .HasForeignKey("ProfileId");
+                });
+
+            modelBuilder.Entity("CommonPassion_Backend.Data.Entities.Profile", b =>
+                {
+                    b.HasOne("CommonPassion_Backend.Data.Entities.User", "User")
+                        .WithOne("Profile")
+                        .HasForeignKey("CommonPassion_Backend.Data.Entities.Profile", "UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("CommonPassion_Backend.Data.Entities.Reactions", b =>
+                {
+                    b.HasOne("CommonPassion_Backend.Data.Entities.Profile", "Profile")
+                        .WithMany()
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CommonPassion_Backend.Data.Entities.UserReview", null)
+                        .WithMany("Dislikes")
+                        .HasForeignKey("UserReviewId");
+
+                    b.HasOne("CommonPassion_Backend.Data.Entities.UserReview", null)
+                        .WithMany("Likes")
+                        .HasForeignKey("UserReviewId1");
+
+                    b.Navigation("Profile");
+                });
+
+            modelBuilder.Entity("CommonPassion_Backend.Data.Entities.ResponsePending", b =>
+                {
+                    b.HasOne("CommonPassion_Backend.Data.Entities.Profile", null)
+                        .WithMany("ResponsePendings")
+                        .HasForeignKey("ProfileId");
+                });
+
+            modelBuilder.Entity("CommonPassion_Backend.Data.Entities.UserReview", b =>
+                {
+                    b.HasOne("CommonPassion_Backend.Data.Entities.LeagueDetails", "LeagueReviewd")
+                        .WithMany("UsersReview")
+                        .HasForeignKey("LeagueReviewdId");
+
+                    b.HasOne("CommonPassion_Backend.Data.Entities.Profile", "Profile")
+                        .WithMany("Reviews")
+                        .HasForeignKey("ProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("LeagueReviewd");
+
+                    b.Navigation("Profile");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -226,7 +515,7 @@ namespace CommonPassion_Backend.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("CommonPassion_Backend.Entities.User", null)
+                    b.HasOne("CommonPassion_Backend.Data.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -235,7 +524,7 @@ namespace CommonPassion_Backend.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("CommonPassion_Backend.Entities.User", null)
+                    b.HasOne("CommonPassion_Backend.Data.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -250,7 +539,7 @@ namespace CommonPassion_Backend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CommonPassion_Backend.Entities.User", null)
+                    b.HasOne("CommonPassion_Backend.Data.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -259,11 +548,39 @@ namespace CommonPassion_Backend.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("CommonPassion_Backend.Entities.User", null)
+                    b.HasOne("CommonPassion_Backend.Data.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CommonPassion_Backend.Data.Entities.LeagueDetails", b =>
+                {
+                    b.Navigation("UsersReview");
+                });
+
+            modelBuilder.Entity("CommonPassion_Backend.Data.Entities.Profile", b =>
+                {
+                    b.Navigation("ConnectionPendings");
+
+                    b.Navigation("Connections");
+
+                    b.Navigation("ResponsePendings");
+
+                    b.Navigation("Reviews");
+                });
+
+            modelBuilder.Entity("CommonPassion_Backend.Data.Entities.User", b =>
+                {
+                    b.Navigation("Profile");
+                });
+
+            modelBuilder.Entity("CommonPassion_Backend.Data.Entities.UserReview", b =>
+                {
+                    b.Navigation("Dislikes");
+
+                    b.Navigation("Likes");
                 });
 #pragma warning restore 612, 618
         }

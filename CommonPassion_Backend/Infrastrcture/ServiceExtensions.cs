@@ -1,6 +1,6 @@
 ﻿using CommonPassion_Backend.Data.IServicies;
 using CommonPassion_Backend.Data.Servicies;
-using CommonPassion_Backend.Entities;
+using CommonPassion_Backend.Data.Entities;
 using CommonPassion_Backend.IServicies;
 using CommonPassion_Backend.Migrations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -11,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using CommonPassion_Backend.Settings;
+using CommonPassion_Backend.Data.Servicies.BlobService;
 
 namespace CommonPassion_Backend.Infrastrcture
 {
@@ -28,7 +29,15 @@ namespace CommonPassion_Backend.Infrastrcture
                 AddTransient<IStandingSerivce, StandingService>().
                 AddTransient<IPlayerStandingService, PlayerStandingService>().
                 AddTransient<IFixtureService, FixtureService>().
-                AddTransient<ICoachService, CoachService>();
+                AddTransient<ICoachService, CoachService>().
+                AddTransient<IConnectionService, ConnectionService>().
+                AddTransient<IProfileService, ProfileService>().
+                AddScoped<IBlobStorageService, BlobStorageService>().
+                AddTransient<IReactionService, ReactionService>().
+                AddTransient<IUserReviewService, UserReviewService>().
+                AddTransient<ILeagueDetailsService, LeagueDetailsService>();
+                
+                
                 
         }
 

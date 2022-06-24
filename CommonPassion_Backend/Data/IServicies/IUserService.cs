@@ -1,4 +1,4 @@
-﻿using CommonPassion_Backend.Entities;
+﻿using CommonPassion_Backend.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +10,8 @@ namespace CommonPassion_Backend.IServicies
     public interface IUserService
     {
         IEnumerable<User> GetAll();
+        Task<User> FindByNameAsync(string username);
+        Task<bool> CheckPasswordAsync(User user, string password);
         User GetUserById(string Id);
         bool SaveChanges();
 

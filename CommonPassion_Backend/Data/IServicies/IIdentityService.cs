@@ -1,4 +1,4 @@
-﻿using CommonPassion_Backend.Entities;
+﻿using CommonPassion_Backend.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
