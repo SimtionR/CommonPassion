@@ -14,6 +14,8 @@ import {PlayerDetailComponent} from './components/player-detail/player-detail.co
 import { PlayerStandingComponent } from './components/player-standing/player-standing.component';
 import { FixtureComponent } from './components/fixture/fixture.component';
 import { LeagueFixtureComponent } from './components/league-fixture/league-fixture.component';
+import { ProfileComponent } from './components/profile/profile.component';
+
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -29,7 +31,8 @@ const routes: Routes = [
   {path: 'player/playerId/:id', component: PlayerDetailComponent},
   {path: 'playerStanding/leagueId/:id', component: PlayerStandingComponent},
   {path: 'fixtures/clubId/:id', component:FixtureComponent},
-  {path: 'leagueFixtures/leagueId/:id', component: LeagueFixtureComponent}
+  {path: 'leagueFixtures/leagueId/:id', component: LeagueFixtureComponent},
+  {path: 'profile', component: ProfileComponent}
 ];
 
 @NgModule({

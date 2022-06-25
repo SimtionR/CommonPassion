@@ -1,0 +1,47 @@
+<div  class="container-fluid"> 
+    <div  class="col-md-6">
+      <div class="card" style="width: 18rem;">
+        <div class="profile-thumb-container" >
+          <img class="profile-picture" src="{{blob}}">         
+        </div>
+         
+          <div class="card-body">
+            <h5 class="card-title">{{profile?.userName }} </h5>
+            
+            
+          </div>
+        </div>
+  </div>
+  <div class="col-md-6 offset-md-6">
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <div>
+          <label for="profileImage">Change Profile Image</label>
+        </div>
+
+        <input type="file"
+               name="profileImage"
+               id="profileImage"
+               placeholder="Change Profile Image"
+               (change)="onFileChange($event)">
+      </div>
+      <button type="submit"
+              class="btn btn-primary">Update<i class="fas fa-user-edit"></i></button>
+    </form>
+    
+ 
+        <button mat-button class="menu-button" >
+            <mat-icon>edit</mat-icon>
+            <span class="menu-text">Edit Personal Data</span>
+        </button>
+        <button mat-button class="menu-button" (click) ="openMyConnections(profile.id)" >
+            <mat-icon>people_outline</mat-icon>
+            <span class="menu-text">See your connections</span>
+        </button>
+  </div>
+
+    
+   <div class="row">
+    
+   </div> 
+

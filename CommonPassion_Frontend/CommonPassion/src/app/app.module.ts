@@ -31,6 +31,12 @@ import { FixtureComponent } from './components/fixture/fixture.component';
 import { DatePipe } from '@angular/common';
 import { LeagueFixtureComponent } from './components/league-fixture/league-fixture.component';
 
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDividerModule} from '@angular/material/divider';
+import { ProfileComponent } from './components/profile/profile.component';
+
 
 @NgModule({
   declarations: [
@@ -49,6 +55,7 @@ import { LeagueFixtureComponent } from './components/league-fixture/league-fixtu
     PlayerStandingComponent,
     FixtureComponent,
     LeagueFixtureComponent,
+    ProfileComponent,
    
    
   ],
@@ -63,7 +70,11 @@ import { LeagueFixtureComponent } from './components/league-fixture/league-fixtu
     MatFormFieldModule,
     MatTabsModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatDividerModule
 
     
   ],

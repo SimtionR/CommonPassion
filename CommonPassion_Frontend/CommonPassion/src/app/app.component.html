@@ -1,3 +1,77 @@
-
+<!-- 
 <app-search-bar></app-search-bar>
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->
+
+<mat-toolbar>
+    <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>
+            menu
+        </mat-icon>   
+        <!-- <mat-icon *ngIf="sidenav.opened">
+            close
+        </mat-icon> -->
+    </button>
+    <div class="search-container">
+        <form class="search-form" #form="ngForm" (ngSubmit)="onSubmit(form)"> 
+            <div class="test" >
+                <span class ="logo"(click)="openHome()"  >Common Passion</span>
+            <input
+                class="search-input"
+                name="search"
+                ngModel
+                placeholder="Find friends and football stuff!"
+                />
+                <button class="search-button">Search</button> 
+
+            </div>
+            
+        </form>
+    </div>
+</mat-toolbar>
+<!-- <app-search-bar></app-search-bar> -->
+<mat-sidenav-container>
+    
+    <mat-sidenav #sidenav="matSidenav">
+        <mat-divider></mat-divider>
+        
+        <img class="avatar mat-elevation-z8" src="{{blob}}"
+        >
+        <h4 class="fullName">{{profile?.userName}}</h4>
+        <mat-divider></mat-divider>
+        <button mat-button class="menu-button" (click)="openHome()">
+            <mat-icon>home</mat-icon>
+            <span class="menu-text">Home</span>
+        </button>
+        <button mat-button class="menu-button" (click)="openProfile()">
+            <mat-icon>person</mat-icon>
+            <span class="menu-text">Profile</span>
+        </button> 
+        <button mat-button class="menu-button">
+            <mat-icon>movie</mat-icon>
+            <span class="menu-text">Movies</span>
+        </button>
+        <button mat-button class="menu-button">
+            <mat-icon>list_alt</mat-icon>
+            <span class="menu-text">Watchlist</span>
+        </button>
+        <button mat-button class="menu-button">
+            <mat-icon>thumbs_up_down</mat-icon>
+            <span class="menu-text">Your Ratings</span>
+        </button>
+         <button mat-button class="menu-button" (click)="openChat()">
+            <mat-icon>whatshot</mat-icon>
+            <span class="menu-text">Chat</span>
+        </button>
+        <button mat-button class="menu-button">
+            <mat-icon>forum</mat-icon>
+            <span class="menu-text">Forum</span>
+        </button>
+        <mat-divider></mat-divider>
+       
+        
+    </mat-sidenav>
+   <mat-sidenav-content>
+    <router-outlet></router-outlet>
+   </mat-sidenav-content>
+</mat-sidenav-container>
+
